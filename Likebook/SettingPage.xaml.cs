@@ -26,19 +26,19 @@ namespace Likebook
 
             Dictionary<string, string> country = new Dictionary<string, string>
             {
-                { "Chrome", "Mozilla/5.0 (Linux; Android 9.0.0; SM-J701F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36" },
+                { "Chrome", "Mozilla/5.0 (Linux; Android 12; Pixel 5 XL build/Beta6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.999 Safari/537.36" },
 
                 { "EDGE Mobile", "Mozilla/5.0 (Windows Mobile 10.0; Android 4.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Mobile Safari/537.36 Edg/80.0.320.0" },
 
                 { "Firefox", "Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0" },
-                { "Firefox Focus", "Mozilla/5.0 (iPhone; CPU iPhone OS 13 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Focus/6.1.1 Mobile/15F79" },
+                { "Firefox Focus", "Mozilla/5.0 (iPhone; CPU iPhone OS 15 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Focus/9.0 Mobile/15F79" },
 
                 { "IE Mobile", "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0;) like iPhone OS 7 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537" },
 
                 { "Opera Mobile", "Mozilla/5.0 (Linux; Android 9.0.0; SM-J701F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.158 Mobile Safari/537.36 OPR/47.0.2249.129321" },
 
-                { "Safari on iPad", "Mozilla/5.0 (iPad; CPU OS 14 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
-                { "Safari on iPhone", "Mozilla/5.0 (iPhone; CPU iPhone OS 14 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
+                { "Safari on iPad", "Mozilla/5.0 (iPad; CPU OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
+                { "Safari on iPhone", "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
 
                 { "Samsung Browser", "Mozilla/5.0 (Linux; Tizen 4.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/56.0.2924.0 Mobile Safari/537.36" },
             };

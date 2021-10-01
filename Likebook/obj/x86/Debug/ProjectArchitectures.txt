@@ -1,1 +1,1 @@
-E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Likebook.csproj;x86
+C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Likebook.csproj;x86

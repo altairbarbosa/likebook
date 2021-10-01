@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CHROMOS</Machine>
+    <Machine>DELL</Machine>
     <WindowsUser>Altair</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>f952ecff-ae28-466b-ab15-41d7f4ff19e1</PackageIdentityName>
     <PackageIdentityPublisher>CN=23966D79-60A0-4950-9FF8-D8923B736479</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\Likebook.exe">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\Likebook.exe">
       <PackagePath>entrypoint\Likebook.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
@@ -370,217 +370,217 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\system.xml.xmlserializer\4.0.11\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\LargeTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\LargeTile.scale-100.png">
       <PackagePath>Assets\LargeTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\LargeTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\LargeTile.scale-125.png">
       <PackagePath>Assets\LargeTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\LargeTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\LargeTile.scale-150.png">
       <PackagePath>Assets\LargeTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\LargeTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\LargeTile.scale-200.png">
       <PackagePath>Assets\LargeTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\LargeTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\LargeTile.scale-400.png">
       <PackagePath>Assets\LargeTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SmallTile.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SmallTile.scale-100.png">
       <PackagePath>Assets\SmallTile.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SmallTile.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SmallTile.scale-125.png">
       <PackagePath>Assets\SmallTile.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SmallTile.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SmallTile.scale-150.png">
       <PackagePath>Assets\SmallTile.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SmallTile.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SmallTile.scale-200.png">
       <PackagePath>Assets\SmallTile.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SmallTile.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SmallTile.scale-400.png">
       <PackagePath>Assets\SmallTile.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SplashScreen.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SplashScreen.scale-125.png">
       <PackagePath>Assets\SplashScreen.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SplashScreen.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SplashScreen.scale-150.png">
       <PackagePath>Assets\SplashScreen.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\SplashScreen.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\SplashScreen.scale-400.png">
       <PackagePath>Assets\SplashScreen.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square150x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square150x150Logo.scale-100.png">
       <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square150x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square150x150Logo.scale-125.png">
       <PackagePath>Assets\Square150x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square150x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square150x150Logo.scale-150.png">
       <PackagePath>Assets\Square150x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square150x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square150x150Logo.scale-400.png">
       <PackagePath>Assets\Square150x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.altform-unplated_targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.scale-125.png">
       <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.scale-150.png">
       <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.scale-400.png">
       <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.targetsize-16.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.targetsize-16.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-16.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.targetsize-256.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.targetsize-256.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.targetsize-32.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.targetsize-32.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-32.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Square44x44Logo.targetsize-48.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Square44x44Logo.targetsize-48.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-48.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\StoreLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\StoreLogo.scale-125.png">
       <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\StoreLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\StoreLogo.scale-150.png">
       <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\StoreLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\StoreLogo.scale-200.png">
       <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\StoreLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\StoreLogo.scale-400.png">
       <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Tiles\150x150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Tiles\150x150.png">
       <PackagePath>Assets\Tiles\150x150.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Tiles\310x150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Tiles\310x150.png">
       <PackagePath>Assets\Tiles\310x150.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Tiles\310x310.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Tiles\310x310.png">
       <PackagePath>Assets\Tiles\310x310.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Wide310x150Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Wide310x150Logo.scale-100.png">
       <PackagePath>Assets\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Wide310x150Logo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Wide310x150Logo.scale-125.png">
       <PackagePath>Assets\Wide310x150Logo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Wide310x150Logo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Wide310x150Logo.scale-150.png">
       <PackagePath>Assets\Wide310x150Logo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Assets\Wide310x150Logo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Assets\Wide310x150Logo.scale-400.png">
       <PackagePath>Assets\Wide310x150Logo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\Likebook.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\Likebook.xr.xml">
       <PackagePath>Likebook.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\SettingPage.xbf">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\SettingPage.xbf">
       <PackagePath>SettingPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Debug\Core\Likebook.exe">
+    <AppxPackagedFile Include="C:\Users\Altair\source\repos\oquesereu\likebook\Likebook\bin\x86\Debug\Core\Likebook.exe">
       <PackagePath>Likebook.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
@@ -611,33 +611,33 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.27023.1</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.27023.1</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>ARM64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.27023.1</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.27023.1</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
