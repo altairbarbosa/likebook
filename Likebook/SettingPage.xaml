@@ -1,0 +1,155 @@
+﻿<Page
+    x:Class="Likebook.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Pivot x:Uid="pivotSettings">
+        <PivotItem x:Uid="pivotLikebookSettings" FontSize="30">
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" IsScrollInertiaEnabled="True" x:Name="ContentScroll">
+                <StackPanel>
+                    <StackPanel>
+                        <ComboBox x:Uid="UserAgent" Name="UserAgent" SelectionChanged="ComboBox1_SelectionChanged"/>
+                        <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"></AppBarSeparator>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="fullScreen" Name="fullScreen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="blockTopBar" Name="blockTopBar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="darkTheme" Name="darkTheme" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="browser" Name="browser" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="commandbar" Name="commandbar" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="centerTextPosts" Name="centerTextPosts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="addSpaceBetweenPosts" Name="addSpaceBetweenPosts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel>
+                        <ToggleSwitch x:Uid="showRecentNews" Name="showRecentNews" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="SaveStatus_Toggled">
+                            <ToggleSwitch.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                </DataTemplate>
+                            </ToggleSwitch.HeaderTemplate>
+                        </ToggleSwitch>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Uid="iconAppButton" Name="iconButton" Click="IconAppButton_Click"/>
+                        <AppBarSeparator />
+                        <Button x:Uid="clearAppButton" Name="clearButton" Click="ClearAppButton_Click"/>
+                    </StackPanel>
+                    <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"/>
+                </StackPanel>
+            </ScrollViewer>
+        </PivotItem>
+
+        <PivotItem x:Uid="pivotHelp" FontSize="30">
+            <ScrollViewer>
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Uid="helpSave" FontSize="22" TextWrapping="Wrap"/>
+                        <TextBlock x:Uid="helpDialog" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Uid="helpCache" FontSize="22" TextWrapping="Wrap"/>
+                        <TextBlock x:Uid="cacheDialog" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock x:Uid="helpClip" FontSize="22" TextWrapping="Wrap"/>
+                        <TextBlock x:Uid="clipDialog" FontSize="14" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </PivotItem>
+
+        <PivotItem x:Uid="pivotAbout" FontSize="30">
+            <StackPanel>
+                <TextBlock x:Uid="nameApp" FontSize="22" TextWrapping="Wrap"/>
+                <TextBlock x:Uid="version" Name="version" FontSize="14"/>
+
+                <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"></AppBarSeparator>
+
+                <TextBlock x:Uid="privacy" TextWrapping="Wrap" FontSize="22"/>
+                <HyperlinkButton Click="Privacy">
+                    <TextBlock x:Uid="click" TextWrapping="Wrap" FontSize="14"/>
+                </HyperlinkButton>
+
+                <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"></AppBarSeparator>
+
+                <TextBlock x:Uid="oquesereuTitle" FontSize="22" TextWrapping="Wrap"/>
+                <TextBlock x:Uid="oquesereuDialog" Name="oquesereuDialog" FontSize="14" TextWrapping="Wrap" TextAlignment="Justify"/>
+                <HyperlinkButton Click="Aplicativos">
+                    <TextBlock x:Uid="apps" TextWrapping="Wrap" FontSize="14"/>
+                </HyperlinkButton>
+
+                <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"></AppBarSeparator>
+
+                <StackPanel>
+                    <Button x:Uid="reviewAppButton" Name="reviewAppButton" Click="ReviewAppButton_Click"/>
+                </StackPanel>
+
+                <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"></AppBarSeparator>
+
+                <StackPanel>
+                    <Button x:Uid="shareAppButton" Name="shareAppButton" Click="ShareAppButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </PivotItem>
+    </Pivot>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch" Background="#3b5998">
+            <AppBarButton x:Uid="backButton" Name="backButton" Icon="Back" Click="BackButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

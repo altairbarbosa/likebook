@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="backButton.Label" xml:space="preserve">
+    <value>возвращение</value>
+  </data>
+  <data name="blockTopBar.Header" xml:space="preserve">
+    <value>Закрепить верхний бар</value>
+  </data>
+  <data name="centerTextPosts.Header" xml:space="preserve">
+    <value>Центрирование текст сообщений</value>
+  </data>
+  <data name="clearAppButton.Content" xml:space="preserve">
+    <value>Очистить кэш</value>
+  </data>
+  <data name="click.Text" xml:space="preserve">
+    <value>Нажмите здесь, чтобы прочитать</value>
+  </data>
+  <data name="ContentBack" xml:space="preserve">
+    <value>Вы собираетесь покинуть Likebook, действительно хотят уйти?</value>
+  </data>
+  <data name="ContentCache" xml:space="preserve">
+    <value>Очистка успешно, перезапустить приложение?</value>
+  </data>
+  <data name="fullScreen.Header" xml:space="preserve">
+    <value>Включить полный экран</value>
+  </data>
+  <data name="hideAdsAndPeopleYouMayKnow.Header" xml:space="preserve">
+    <value>Скрыть рекламу и людей, которых вы можете знать</value>
+  </data>
+  <data name="homeButton.Label" xml:space="preserve">
+    <value>первый</value>
+  </data>
+  <data name="nameApp.Text" xml:space="preserve">
+    <value>Likebook</value>
+  </data>
+  <data name="noConnection" xml:space="preserve">
+    <value>Существовал проблема подключения. Убедитесь, что вы включили Wi-Fi или данных и повторите попытку.</value>
+  </data>
+  <data name="pivotAbout.Header" xml:space="preserve">
+    <value>на</value>
+  </data>
+  <data name="pivotLikebookSettings.Header" xml:space="preserve">
+    <value>опции</value>
+  </data>
+  <data name="pivotSettings.Title" xml:space="preserve">
+    <value>корректировок</value>
+  </data>
+  <data name="PrimaryButtonText" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="PrimaryButtonTextBack" xml:space="preserve">
+    <value>оставлять</value>
+  </data>
+  <data name="privacy.Text" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="refreshButton.Label" xml:space="preserve">
+    <value>обновление</value>
+  </data>
+  <data name="saveButton.Label" xml:space="preserve">
+    <value>экономить</value>
+  </data>
+  <data name="saveDialog" xml:space="preserve">
+    <value>Успешно сохранены, проверьте папку "Saved Pictures". Если у вас возникли проблемы, посетите "Помощь" в разделе "Настройки" для получения дополнительной информации.</value>
+  </data>
+  <data name="SecondaryButtonText" xml:space="preserve">
+    <value>отменить</value>
+  </data>
+  <data name="settingsButton.Label" xml:space="preserve">
+    <value>корректировок</value>
+  </data>
+  <data name="shareAppButton.Content" xml:space="preserve">
+    <value>Доля приложение</value>
+  </data>
+  <data name="shareMessage" xml:space="preserve">
+    <value>Получить Likebook в Microsoft Store! https://www.microsoft.com/store/apps/9nblggh520bn</value>
+  </data>
+  <data name="showRecentNews.Header" xml:space="preserve">
+    <value>Показать последние публикации первые</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Likebook</value>
+  </data>
+  <data name="topButton.Label" xml:space="preserve">
+    <value>вверх</value>
+  </data>
+  <data name="version.Text" xml:space="preserve">
+    <value>версия</value>
+  </data>
+  <data name="addSpaceBetweenPosts.Header" xml:space="preserve">
+    <value>Добавить пространство между должностями</value>
+  </data>
+  <data name="darkTheme.Header" xml:space="preserve">
+    <value>Включить темную темой</value>
+  </data>
+  <data name="cacheDialog.Text" xml:space="preserve">
+    <value>Чтобы очистить кэш приложением просто нажмите кнопку "Очистить кэш" в разделе "Настройки", подождите несколько секунд, а затем нажмите кнопку "Выход", перезапустите приложение и обратите внимание на полную очистку.</value>
+  </data>
+  <data name="helpCache.Text" xml:space="preserve">
+    <value>Как ясно в кэше приложением?</value>
+  </data>
+  <data name="helpDialog.Text" xml:space="preserve">
+    <value>Чтобы сохранить изображения, перейдите к изображению, о котором идет речь, щелкните "Просмотр в исходном размере", изображение откроется в полноэкранном режиме, затем нажмите кнопку "Сохранить" и подождите несколько минут. Для сохранения видеороликов необходимо, чтобы эта функция была включена в параметрах "Параметры", в этом случае просто перейти к видеоролику, о котором идет речь, и дать воспроизведение, видео откроется в полноэкранном режиме, а затем нажать кнопку "Сохранить" и подождать несколько минут.</value>
+  </data>
+  <data name="helpSave.Text" xml:space="preserve">
+    <value>Как сохранить файл?</value>
+  </data>
+  <data name="pivotHelp.Header" xml:space="preserve">
+    <value>помощь</value>
+  </data>
+  <data name="browser.Header" xml:space="preserve">
+    <value>Активировать браузер внутренний</value>
+  </data>
+  <data name="ClipButton.Label" xml:space="preserve">
+    <value>скопируйте ссылку</value>
+  </data>
+  <data name="forwardButton.Label" xml:space="preserve">
+    <value>вперед</value>
+  </data>
+  <data name="clipDialog.Text" xml:space="preserve">
+    <value>«Копировать ссылку» доступна, так что вы можете захватить любую ссылку во время просмотра через встроенный браузер Likebook.</value>
+  </data>
+  <data name="helpClip.Text" xml:space="preserve">
+    <value>Что такое ссылка копия ресурса?</value>
+  </data>
+  <data name="linkCopy" xml:space="preserve">
+    <value>Ссылка скопирована в буфер обмена. Если у вас возникли проблемы, посетите «Помощь» в разделе «Настройки» для получения дополнительной информации.</value>
+  </data>
+  <data name="videoMode.Header" xml:space="preserve">
+    <value>Включить загрузку видео</value>
+  </data>
+  <data name="commandbar.Header" xml:space="preserve">
+    <value>Включение кнопок навигации</value>
+  </data>
+  <data name="iconAppButton.Content" xml:space="preserve">
+    <value>Контактный</value>
+  </data>
+  <data name="oquesereuDialog.Text" xml:space="preserve">
+    <value>Dev. Altair Barbosa - Спасибо за загрузку нашего приложения, не забудьте оставить свой отзыв в Microsoft Store и узнать о других наших продуктах по ссылке ниже.</value>
+  </data>
+  <data name="oquesereuTitle.Text" xml:space="preserve">
+    <value>Oquesereu</value>
+  </data>
+  <data name="reportAppButton.Content" xml:space="preserve">
+    <value>Сообщить об ошибках</value>
+  </data>
+  <data name="reviewAppButton.Content" xml:space="preserve">
+    <value>Оцените приложение</value>
+  </data>
+  <data name="apps.Text" xml:space="preserve">
+    <value>Нажмите здесь, чтобы узнать</value>
+  </data>
+  <data name="UserAgent.Header" xml:space="preserve">
+    <value>Режим навигации</value>
+  </data>
+</root>

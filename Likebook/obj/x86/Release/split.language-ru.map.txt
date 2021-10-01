@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-ru"
+"ResourceDimensions"		"language-ru"
+
+[Files]
+"E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\obj\x86\Release\split.language-ru.pri"			"resources.pri"

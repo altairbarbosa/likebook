@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp build" xmlns:build="http://schemas.microsoft.com/developer/appx/2015/build">
+  <!--
+    ESTE ARQUIVO DE PACOTE DE MANIFESTO É GERADO PELO PROCESSO DE COMPILAÇÃO.
+
+    Alterações feitas neste arquivo serão perdidas quando ele for regenerado. Para corrigir erros neste arquivo, edite o arquivo de fonte .appxmanifest.
+
+    Para obter mais informações sobre arquivos de pacote de manifesto consulte http://go.microsoft.com/fwlink/?LinkID=241727
+  -->
+  <Identity Name="57268OquesereuSolutions.Likebook" Publisher="CN=23966D79-60A0-4950-9FF8-D8923B736479" Version="10.0.0.0" ProcessorArchitecture="x86" />
+  <mp:PhoneIdentity PhoneProductId="f952ecff-ae28-466b-ab15-41d7f4ff19e1" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>Likebook</DisplayName>
+    <PublisherDisplayName>Oquesereu</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.17763.0" />
+    <PackageDependency Name="Microsoft.NET.Native.Framework.1.7" MinVersion="1.7.27413.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    <PackageDependency Name="Microsoft.NET.Native.Runtime.1.7" MinVersion="1.7.25531.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="EN" />
+    <Resource Language="AR" />
+    <Resource Language="DE" />
+    <Resource Language="EL" />
+    <Resource Language="ES" />
+    <Resource Language="FR" />
+    <Resource Language="HI" />
+    <Resource Language="ID" />
+    <Resource Language="IT" />
+    <Resource Language="JA" />
+    <Resource Language="PL" />
+    <Resource Language="PT" />
+    <Resource Language="RO" />
+    <Resource Language="RU" />
+    <Resource Language="TR" />
+    <Resource Language="VI" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="Likebook.exe" EntryPoint="Likebook.App">
+      <uap:VisualElements DisplayName="Likebook" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Likebook" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Likebook" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#3b5998" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <uap:Capability Name="picturesLibrary" />
+    <DeviceCapability Name="location" />
+  </Capabilities>
+  <build:Metadata>
+    <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
+    <build:Item Name="VisualStudio" Version="15.0" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2017" />
+    <build:Item Name="OperatingSystem" Version="10.0.19041.980 (WinBuild.160101.0800)" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="15.0.28307.1089" />
+    <build:Item Name="ProjectGUID" Value="{FFE0A170-28B2-4A38-8B06-3E1CDD8A09A6}" />
+    <build:Item Name="ilc.exe" Version="1.7.27420.00 built by: PROJECTNGDR2" />
+    <build:Item Name="OptimizingToolset" Value="ilc.exe" />
+    <build:Item Name="UseDotNetNativeSharedAssemblyFrameworkPackage" Value="True" />
+    <build:Item Name="UniversalGenericsOptOut" Value="false" />
+    <build:Item Name="ShortcutGenericAnalysis" Value="false" />
+    <build:Item Name="Microsoft.Windows.UI.Xaml.Build.Tasks.dll" Version="15.0.28307.1082" />
+    <build:Item Name="WindowsMobile" Version="10.0.17763.0" />
+    <build:Item Name="MakePri.exe" Version="10.0.17763.132 (WinBuild.160101.0800)" />
+  </build:Metadata>
+</Package>

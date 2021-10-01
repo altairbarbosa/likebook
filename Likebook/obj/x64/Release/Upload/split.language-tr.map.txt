@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-tr"
+"ResourceDimensions"		"language-tr"
+
+[Files]
+"E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\obj\x64\Release\Upload\split.language-tr.pri"			"resources.pri"

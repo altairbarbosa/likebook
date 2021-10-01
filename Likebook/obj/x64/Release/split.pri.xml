@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="57268OquesereuSolutions.Likebook" version="1.0" primary="true">
+		<Qualifiers>
+			<AlternateForm>UNPLATED</AlternateForm>
+			<Language>EN</Language>
+			<Scale>200</Scale>
+			<TargetSize>256,16,24,32,48</TargetSize>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<NamedResource name="App.xbf" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/App.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Likebook.xr.xml" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Likebook.xr.xml">
+				<Candidate type="Path">
+					<Value>Likebook.xr.xml</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="MainPage.xbf" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/MainPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="SettingPage.xbf" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/SettingPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="Assets">
+				<NamedResource name="LargeTile.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/LargeTile.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\LargeTile.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SmallTile.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/SmallTile.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\SmallTile.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SplashScreen.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/SplashScreen.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\SplashScreen.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square150x150Logo.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Square150x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square150x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square44x44Logo.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Square44x44Logo.png">
+					<Candidate qualifiers="TargetSize-48, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.altform-unplated_targetsize-48.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-48" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-48.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-32, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.altform-unplated_targetsize-32.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-32" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-32.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-256, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.altform-unplated_targetsize-256.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-256" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-256.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-24, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.altform-unplated_targetsize-24.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-24" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-24.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-16, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.altform-unplated_targetsize-16.png</Value>
+					</Candidate>
+					<Candidate qualifiers="TargetSize-16" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-16.png</Value>
+					</Candidate>
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="StoreLogo.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/StoreLogo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\StoreLogo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Wide310x150Logo.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Wide310x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Wide310x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Tiles">
+					<NamedResource name="150x150.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Tiles/150x150.png">
+						<Candidate type="Path">
+							<Value>Assets\Tiles\150x150.png</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="310x150.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Tiles/310x150.png">
+						<Candidate type="Path">
+							<Value>Assets\Tiles\310x150.png</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="310x310.png" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Assets/Tiles/310x310.png">
+						<Candidate type="Path">
+							<Value>Assets\Tiles\310x310.png</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Properties">
+				<NamedResource name="Default.rd.xml" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/Properties/Default.rd.xml">
+					<Candidate type="Path">
+						<Value>Properties\Default.rd.xml</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="WinMetadata">
+				<NamedResource name="Windows.winmd" uri="ms-resource://57268OquesereuSolutions.Likebook/Files/WinMetadata/Windows.winmd">
+					<Candidate type="Path">
+						<Value>WinMetadata\Windows.winmd</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Resources">
+			<NamedResource name="ContentBack" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/ContentBack">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Are you about to leave Likebook, do you really want to leave?</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ContentCache" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/ContentCache">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Cleaning successful, do you want to restart the application?</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="linkCopy" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/linkCopy">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Link copied to clipboard. If you have problems, please visit the "Help" section under "Settings" for more information.</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="noConnection" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/noConnection">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>There was a problem connecting. Make sure you've turned on Wi-Fi or data networking and try again.</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="PrimaryButtonText" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/PrimaryButtonText">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Ok</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="PrimaryButtonTextBack" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/PrimaryButtonTextBack">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Exit</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="saveDialog" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/saveDialog">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Saved successfully, check the "Saved Pictures" folder. If you have problems, please visit the "Help" section under "Settings" for more information.</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="SecondaryButtonText" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/SecondaryButtonText">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Cancel</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="shareMessage" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/shareMessage">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Purchase Likebook in the Microsoft Store! https://www.microsoft.com/store/apps/9nblggh520bn</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Title" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/Title">
+				<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+					<Value>Likebook</Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="addSpaceBetweenPosts">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/addSpaceBetweenPosts/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Add space between posts</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="apps">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/apps/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Click here to know</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="backButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/backButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Back</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="blockTopBar">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/blockTopBar/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Pin upper bar</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="browser">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/browser/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Enable internal browser</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="cacheDialog">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/cacheDialog/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>To clear the application cache just click on "Clear cache" in the "Options" session, wait a few seconds and then click "Exit", restart the application and you will notice the cleaning completed.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="centerTextPosts">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/centerTextPosts/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Center posts text</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="clearAppButton">
+				<NamedResource name="Content" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/clearAppButton/Content">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Clear cache</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="click">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/click/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Click here to read</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="ClipButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/ClipButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Copy link</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="clipDialog">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/clipDialog/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>The Copy Link feature is available so you can capture some link while browsing through the Likebook built-in browser.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="commandbar">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/commandbar/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Enable navigation buttons</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="darkTheme">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/darkTheme/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Enable dark theme</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="forwardButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/forwardButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Forward</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="fullScreen">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/fullScreen/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Enable full screen</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="helpCache">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/helpCache/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>How to clear the application cache?</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="helpClip">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/helpClip/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>What is the copy link feature for?</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="helpDialog">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/helpDialog/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>To save images go to the image in question, click "View in the original size", the image will open in full screen, then click the "Save" button and wait a few moments. To save videos It is necessary that this feature is enabled in "Options", done this, simply navigate to the video in question and give play, the video will open in full screen, then click the "Save" button and wait a few moments.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="helpSave">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/helpSave/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>How to save a file?</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="hideAdsAndPeopleYouMayKnow">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/hideAdsAndPeopleYouMayKnow/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Hide advertisements and people you might know</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="homeButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/homeButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Home</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="iconAppButton">
+				<NamedResource name="Content" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/iconAppButton/Content">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Pin</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="nameApp">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/nameApp/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Likebook</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="oquesereuDialog">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/oquesereuDialog/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Dev. Altair Barbosa - Thanks for downloading our app, don't forget to leave your review on the Microsoft Store and learn about our other products through the link below.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="oquesereuTitle">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/oquesereuTitle/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Oquesereu</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="pivotAbout">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/pivotAbout/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>About</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="pivotHelp">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/pivotHelp/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Help</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="pivotLikebookSettings">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/pivotLikebookSettings/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Options</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="pivotSettings">
+				<NamedResource name="Title" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/pivotSettings/Title">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Settings</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="privacy">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/privacy/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Privacy policy</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="refreshButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/refreshButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Refresh</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="reportAppButton">
+				<NamedResource name="Content" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/reportAppButton/Content">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Report errors</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="reviewAppButton">
+				<NamedResource name="Content" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/reviewAppButton/Content">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Rate the app</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="saveButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/saveButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Save</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="settingsButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/settingsButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Settings</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="shareAppButton">
+				<NamedResource name="Content" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/shareAppButton/Content">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Share this app</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="showRecentNews">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/showRecentNews/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Show latest posts first</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="topButton">
+				<NamedResource name="Label" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/topButton/Label">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Top</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="UserAgent">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/UserAgent/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Navigation mode</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="version">
+				<NamedResource name="Text" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/version/Text">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Version</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="videoMode">
+				<NamedResource name="Header" uri="ms-resource://57268OquesereuSolutions.Likebook/Resources/videoMode/Header">
+					<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+						<Value>Enable video download</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

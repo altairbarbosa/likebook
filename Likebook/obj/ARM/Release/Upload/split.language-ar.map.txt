@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-ar"
+"ResourceDimensions"		"language-ar"
+
+[Files]
+"E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\obj\ARM\Release\Upload\split.language-ar.pri"			"resources.pri"

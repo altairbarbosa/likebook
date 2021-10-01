@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Likebook.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <WebView x:Name="likebookWebView" NavigationStarting="LikebookWebView_NavigationStarting" NewWindowRequested="LikebookWebView_NewWindowRequested" LoadCompleted="LikebookWebView_LoadCompleted" NavigationFailed="LikebookWebView_NavigationFailed" PermissionRequested="LikebookWebView_PermissionRequested"/>
+        <ProgressBar x:Name="progressBar" Height="10" VerticalAlignment="Bottom" Background="Transparent" Foreground="#3b5998"/>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch" Background="#3b5998">
+            <AppBarButton x:Uid="backButton" Name="backButton" Icon="Back" Click="BackButton_Click"/>
+            <AppBarButton x:Uid="topButton" Name="topButton" Icon="Up" Click="TopButton_Click"/>
+            <AppBarButton x:Uid="refreshButton" Name="refreshButton" Icon="Refresh" Click="RefreshButton_Click"/>
+            <AppBarButton x:Uid="homeButton" Name="homeButton" Icon="Home" Click="HomeButton_Click"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="saveButton" Name="saveButton" Icon="Save" Click="SaveButton_Click"/>
+                <AppBarButton x:Uid="clipButton" Name="clipButton" Icon="Copy" Click="ClipButton_Click"/>
+                <AppBarButton x:Uid="settingsButton" Name="settingsButton" Icon="Setting" Click="SettingsButton_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

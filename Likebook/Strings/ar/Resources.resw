@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="backButton.Label" xml:space="preserve">
+    <value>مرة أخرى</value>
+  </data>
+  <data name="blockTopBar.Header" xml:space="preserve">
+    <value>ربط الشريط العلوي</value>
+  </data>
+  <data name="centerTextPosts.Header" xml:space="preserve">
+    <value>توسيط النص من المشاركات</value>
+  </data>
+  <data name="clearAppButton.Content" xml:space="preserve">
+    <value>مسح ذاكرة التخزين المؤقت</value>
+  </data>
+  <data name="click.Text" xml:space="preserve">
+    <value>اضغط هنا لقراءة</value>
+  </data>
+  <data name="ContentBack" xml:space="preserve">
+    <value>كنت على وشك مغادرة Likebook، تريد حقا أن تترك؟</value>
+  </data>
+  <data name="ContentCache" xml:space="preserve">
+    <value>تنظيف ناجحة، لإعادة تشغيل التطبيق؟</value>
+  </data>
+  <data name="fullScreen.Header" xml:space="preserve">
+    <value>تمكين كامل الشاشة</value>
+  </data>
+  <data name="hideAdsAndPeopleYouMayKnow.Header" xml:space="preserve">
+    <value>إخفاء الإعلانات واشخاص قد تعرفهم</value>
+  </data>
+  <data name="homeButton.Label" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="nameApp.Text" xml:space="preserve">
+    <value>Likebook</value>
+  </data>
+  <data name="noConnection" xml:space="preserve">
+    <value>وكان هناك مشكلة في الاتصال. تأكد من أن لك بتنشيط شبكة Wi-fi أو البيانات وحاول مرة أخرى.</value>
+  </data>
+  <data name="pivotAbout.Header" xml:space="preserve">
+    <value>حول</value>
+  </data>
+  <data name="pivotLikebookSettings.Header" xml:space="preserve">
+    <value>خيارات</value>
+  </data>
+  <data name="pivotSettings.Title" xml:space="preserve">
+    <value>التعديلات</value>
+  </data>
+  <data name="PrimaryButtonText" xml:space="preserve">
+    <value>حسنا</value>
+  </data>
+  <data name="PrimaryButtonTextBack" xml:space="preserve">
+    <value>إجازة</value>
+  </data>
+  <data name="privacy.Text" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="refreshButton.Label" xml:space="preserve">
+    <value>التحديث</value>
+  </data>
+  <data name="saveButton.Label" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="saveDialog" xml:space="preserve">
+    <value>حفظ بنجاح، تحقق من "محفوظ صور" مجلد. إذا كان لديك مشاكل، يرجى زيارة قسم "المساعدة" في "لوحة التحكم" لمزيد من المعلومات.</value>
+  </data>
+  <data name="SecondaryButtonText" xml:space="preserve">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="settingsButton.Label" xml:space="preserve">
+    <value>التعديلات</value>
+  </data>
+  <data name="shareAppButton.Content" xml:space="preserve">
+    <value>مشاركة التطبيق</value>
+  </data>
+  <data name="shareMessage" xml:space="preserve">
+    <value>الحصول على Likebook في متجر ويندوز! https://www.microsoft.com/store/apps/9nblggh520bn</value>
+  </data>
+  <data name="showRecentNews.Header" xml:space="preserve">
+    <value>وتظهر أحدث المنشورات الأولى</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Likebook</value>
+  </data>
+  <data name="topButton.Label" xml:space="preserve">
+    <value>تسلق</value>
+  </data>
+  <data name="version.Text" xml:space="preserve">
+    <value>الإصدار</value>
+  </data>
+  <data name="addSpaceBetweenPosts.Header" xml:space="preserve">
+    <value>إضافة مسافة بين المشاركات</value>
+  </data>
+  <data name="darkTheme.Header" xml:space="preserve">
+    <value>تمكين موضوع الظلام</value>
+  </data>
+  <data name="cacheDialog.Text" xml:space="preserve">
+    <value>لمسح ذاكرة التخزين المؤقت تطبيق فقط انقر فوق "مسح الذاكرة المؤقتة" في قسم "خيارات" و، انتظر بضع ثوان ثم انقر فوق "إنهاء"، إعادة تشغيل التطبيق وتلاحظ تنظيف كاملة.</value>
+  </data>
+  <data name="helpCache.Text" xml:space="preserve">
+    <value>تنظيف ذاكرة التخزين المؤقت التطبيق؟</value>
+  </data>
+  <data name="helpDialog.Text" xml:space="preserve">
+    <value>لحفظ الصور الذهاب إلى الصورة في السؤال ، انقر فوق "عرض في الحجم الأصلي" ، وسوف تفتح الصورة في ملء الشاشة ، ثم انقر علي "حفظ" الزر والانتظار لحظات قليله. لحفظ ملفات الفيديو من الضروري ان يتم تمكين هذه الميزة في "خيارات" ، والقيام بذلك ، ببساطه انتقل إلى الفيديو في السؤال وإعطاء اللعب ، والفيديو سوف تفتح في كامل الشاشة ، ثم انقر علي "حفظ" الزر والانتظار لحظات قليله.</value>
+  </data>
+  <data name="helpSave.Text" xml:space="preserve">
+    <value>حفظ الملف؟</value>
+  </data>
+  <data name="pivotHelp.Header" xml:space="preserve">
+    <value>مساعدة</value>
+  </data>
+  <data name="browser.Header" xml:space="preserve">
+    <value>تفعيل المتصفح الداخلي</value>
+  </data>
+  <data name="ClipButton.Label" xml:space="preserve">
+    <value>نسخ الرابط</value>
+  </data>
+  <data name="forwardButton.Label" xml:space="preserve">
+    <value>إلى الأمام</value>
+  </data>
+  <data name="clipDialog.Text" xml:space="preserve">
+    <value>"الحلقة نسخ" متاح حتى تتمكن من القبض على أي رابط أثناء التصفح من خلال متصفح Likebook الداخلي.</value>
+  </data>
+  <data name="helpClip.Text" xml:space="preserve">
+    <value>ما هو الرابط نسخة الموارد؟</value>
+  </data>
+  <data name="linkCopy" xml:space="preserve">
+    <value>تم نسخ الرابط إلى الحافظة. إذا كان لديك مشاكل، يرجى زيارة قسم "مساعدة" تحت عنوان "الإعدادات" لمزيد من المعلومات.</value>
+  </data>
+  <data name="videoMode.Header" xml:space="preserve">
+    <value>تمكين تحميل الفيديو</value>
+  </data>
+  <data name="commandbar.Header" xml:space="preserve">
+    <value>تمكين أزرار التنقل</value>
+  </data>
+  <data name="iconAppButton.Content" xml:space="preserve">
+    <value>حل</value>
+  </data>
+  <data name="oquesereuDialog.Text" xml:space="preserve">
+    <value>Dev. Altair Barbosa - شكرًا لتنزيل تطبيقنا ، لا تنسَ ترك التعليق الخاص بك على Microsoft Store والتعرف على منتجاتنا الأخرى من خلال الرابط أدناه.</value>
+  </data>
+  <data name="oquesereuTitle.Text" xml:space="preserve">
+    <value>Oquesereu</value>
+  </data>
+  <data name="reportAppButton.Content" xml:space="preserve">
+    <value>الإبلاغ عن الأخطاء</value>
+  </data>
+  <data name="reviewAppButton.Content" xml:space="preserve">
+    <value>تقييم التطبيق</value>
+  </data>
+  <data name="apps.Text" xml:space="preserve">
+    <value>انقر هنا لمعرفة</value>
+  </data>
+  <data name="UserAgent.Header" xml:space="preserve">
+    <value>وضع التنقل</value>
+  </data>
+</root>

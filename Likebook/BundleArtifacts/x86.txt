@@ -1,0 +1,2 @@
+MainPackage=E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\bin\x86\Release\Likebook_10.0.0.0_x86.appx
+SymbolPackage=E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\AppPackages\Likebook_10.0.0.0_Test\Likebook_10.0.0.0_x86.appxsym

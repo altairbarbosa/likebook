@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-hi"
+"ResourceDimensions"		"language-hi"
+
+[Files]
+"E:\Windows\Apps\Microsoft\BETA\Likebook\Likebook\obj\x86\Release\split.language-hi.pri"			"resources.pri"

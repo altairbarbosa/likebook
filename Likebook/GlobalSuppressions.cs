@@ -1,0 +1,2 @@
+﻿[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Scope = "member", Target = "Likebook.UserAgentHelper.#UrlMkSetSessionOption(System.Int32,System.String,System.Int32,System.Int32)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA2101:SpecifyMarshalingForPInvokeStringArguments", MessageId = "1", Scope = "member", Target = "Likebook.UserAgentHelper.#UrlMkSetSessionOption(System.Int32,System.String,System.Int32,System.Int32)")]

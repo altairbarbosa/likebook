@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="Likebook.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <WebView x:ConnectionId='2' x:Name="likebookWebView"                                                                                                                                                                                                                                                                            />
+        <ProgressBar x:ConnectionId='3' x:Name="progressBar" Height="10" VerticalAlignment="Bottom" Background="Transparent" Foreground="#3b5998"/>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:ConnectionId='4' x:Name="commandBar" VerticalAlignment="Stretch" Background="#3b5998">
+            <AppBarButton x:ConnectionId='5' x:Uid="backButton" Name="backButton" Icon="Back"                         />
+            <AppBarButton x:ConnectionId='6' x:Uid="topButton" Name="topButton" Icon="Up"                        />
+            <AppBarButton x:ConnectionId='7' x:Uid="refreshButton" Name="refreshButton" Icon="Refresh"                            />
+            <AppBarButton x:ConnectionId='8' x:Uid="homeButton" Name="homeButton" Icon="Home"                         />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='9' x:Uid="saveButton" Name="saveButton" Icon="Save"                         />
+                <AppBarButton x:ConnectionId='10' x:Uid="clipButton" Name="clipButton" Icon="Copy"                         />
+                <AppBarButton x:ConnectionId='11' x:Uid="settingsButton" Name="settingsButton" Icon="Setting"                             />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
+
