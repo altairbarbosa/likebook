@@ -435,9 +435,11 @@ namespace Likebook
 
             if (input.StartsWith("rgb", StringComparison.OrdinalIgnoreCase))
             {
-                var cleaned = input.Replace("rgba", string.Empty, StringComparison.OrdinalIgnoreCase)
-                                   .Replace("rgb", string.Empty, StringComparison.OrdinalIgnoreCase)
-                                   .Replace("(", string.Empty).Replace(")", string.Empty);
+                var cleaned = input.ToLowerInvariant()
+                                   .Replace("rgba", string.Empty)
+                                   .Replace("rgb", string.Empty)
+                                   .Replace("(", string.Empty)
+                                   .Replace(")", string.Empty);
                 var parts = cleaned.Split(',');
                 if (parts.Length >= 3 &&
                     byte.TryParse(parts[0].Trim(), out byte r) &&
