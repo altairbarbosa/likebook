@@ -14,17 +14,17 @@
             <TextBlock Text="Escolha um site para abrir com o user-agent otimizado." FontSize="14" Opacity="0.8" TextWrapping="Wrap"/>
 
             <GridView x:Name="SiteList"
-                      ItemsSource="{x:Bind Sites}"
+                      ItemsSource="{Binding Sites}"
                       IsItemClickEnabled="True"
                       ItemClick="SiteList_ItemClick"
                       SelectionMode="None">
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                        <ItemsWrapGrid Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
                 <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="local:SiteOption">
+                    <DataTemplate>
                         <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="8" Padding="16" Margin="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                             <StackPanel HorizontalAlignment="Center">
                                 <StackPanel.Resources>
@@ -32,9 +32,9 @@
                                         <Setter Property="Margin" Value="0,4,0,0"/>
                                     </Style>
                                 </StackPanel.Resources>
-                                <FontIcon Glyph="{x:Bind Glyph}" FontSize="32"/>
-                                <TextBlock Text="{x:Bind Name}" FontSize="16" TextAlignment="Center"/>
-                                <TextBlock Text="{x:Bind Description}" FontSize="12" Opacity="0.7" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="200"/>
+                                <FontIcon Glyph="{Binding Glyph}" FontSize="32"/>
+                                <TextBlock Text="{Binding Name}" FontSize="16" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Description}" FontSize="12" Opacity="0.7" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="200"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
