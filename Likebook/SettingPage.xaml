@@ -94,12 +94,17 @@
                     <TextBlock Text="Sites (Hub)" FontSize="20" Margin="0,8,0,4"/>
                     <ListView x:Name="SiteListView" SelectionMode="Single" SelectionChanged="SiteListView_SelectionChanged" Height="200">
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="local:SiteOption">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon Glyph="{x:Bind Glyph}" FontSize="18"/>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="FrameworkElement">
+                                            <Setter Property="Margin" Value="0,0,8,0"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <FontIcon Glyph="{Binding Glyph}" FontSize="18"/>
                                     <StackPanel>
-                                        <TextBlock Text="{x:Bind Name}" FontWeight="SemiBold"/>
-                                        <TextBlock Text="{x:Bind Url}" FontSize="12" Opacity="0.7"/>
+                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding Url}" FontSize="12" Opacity="0.7"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
