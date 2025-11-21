@@ -32,7 +32,7 @@ namespace Likebook
 
             if (rootFrame.Content == null)
             {
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(HubPage), e.Arguments);
             }
 
             Window.Current.Activate();

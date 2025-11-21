@@ -1,0 +1,45 @@
+<Page
+    x:Class="Likebook.HubPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Likebook">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Margin="24,24,24,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE12B;" FontSize="28"/>
+                <TextBlock Text="Likebook Hub" FontSize="32" FontWeight="SemiBold"/>
+            </StackPanel>
+
+            <TextBlock Text="Escolha um site para abrir com o user-agent otimizado." FontSize="14" Opacity="0.8" TextWrapping="Wrap"/>
+
+            <GridView x:Name="SiteList"
+                      ItemsSource="{Binding Sites}"
+                      IsItemClickEnabled="True"
+                      ItemClick="SiteList_ItemClick"
+                      SelectionMode="None">
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="8" Padding="16" Margin="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                            <StackPanel HorizontalAlignment="Center">
+                                <StackPanel.Resources>
+                                    <Style TargetType="FrameworkElement">
+                                        <Setter Property="Margin" Value="0,4,0,0"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <FontIcon Glyph="{Binding Glyph}" FontSize="32"/>
+                                <TextBlock Text="{Binding Name}" FontSize="16" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Description}" FontSize="12" Opacity="0.7" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="200"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </StackPanel>
+    </Grid>
+</Page>
