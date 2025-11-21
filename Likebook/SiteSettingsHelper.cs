@@ -33,10 +33,10 @@ namespace Likebook
         {
             return new List<SiteOption>
             {
-                new SiteOption("Facebook", "https://www.facebook.com/", "Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0", "\uE12B", "Versão mobile do Facebook.", "#3b5998"),
-                new SiteOption("X / Twitter", "https://mobile.twitter.com/", "Mozilla/5.0 (Linux; Android 10; Pixel 3 Build/QP1A.190711.020) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.93 Mobile Safari/537.36", "\uE12A", "Interface mobile do X (antigo Twitter).", "#000000"),
-                new SiteOption("Instagram", "https://www.instagram.com/", "Mozilla/5.0 (Linux; Android 12; Pixel 5 XL build/Beta6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.999 Mobile Safari/537.36", "\uE158", "Instagram com user-agent de Android.", "#C13584"),
-                new SiteOption("YouTube", "https://m.youtube.com/", "Mozilla/5.0 (iPhone; CPU iPhone OS 15 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1", "\uE714", "YouTube mobile em modo iPhone.", "#FF0000")
+                new SiteOption("Facebook", "https://www.facebook.com/", "Mozilla/5.0 (Android 14; Mobile; rv:120.0) Gecko/120.0 Firefox/120.0", "\uE12B", "Versão mobile do Facebook.", "#3b5998"),
+                new SiteOption("X / Twitter", "https://mobile.twitter.com/", "Mozilla/5.0 (Linux; Android 14; Pixel 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.144 Mobile Safari/537.36 EdgA/120.0.0.0", "\uE12A", "Interface mobile do X (antigo Twitter).", "#000000"),
+                new SiteOption("Instagram", "https://www.instagram.com/", "Mozilla/5.0 (Linux; Android 14; Pixel 7 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.144 Mobile Safari/537.36", "\uE158", "Instagram com user-agent de Android.", "#C13584"),
+                new SiteOption("YouTube", "https://m.youtube.com/", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Mobile/15E148 Safari/604.1", "\uE714", "YouTube mobile em modo iPhone.", "#FF0000")
             };
         }
 
