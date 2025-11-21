@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
@@ -18,10 +20,13 @@ namespace Likebook
     public sealed partial class SettingPage
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        public ObservableCollection<SiteOption> Sites { get; } = new ObservableCollection<SiteOption>();
+        private SiteOption selectedSite;
 
         public SettingPage()
         {
             InitializeComponent();
+            InitializeSites();
             InitializeUserAgentCombo();
             LoadSavedValue();
 
@@ -220,5 +225,83 @@ namespace Likebook
 
         private void HubButton_Click(object sender, RoutedEventArgs e)
         { Frame.Navigate(typeof(HubPage)); }
+
+        private void InitializeSites()
+        {
+            Sites.Clear();
+            foreach (var site in SiteSettingsHelper.GetSites())
+            {
+                Sites.Add(site);
+            }
+            SiteListView.ItemsSource = Sites;
+        }
+
+        private void SiteListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedSite = SiteListView.SelectedItem as SiteOption;
+            if (selectedSite != null)
+            {
+                SiteNameBox.Text = selectedSite.Name;
+                SiteUrlBox.Text = selectedSite.Url;
+                SiteUaBox.Text = selectedSite.UserAgent;
+                SiteGlyphBox.Text = selectedSite.Glyph;
+                SiteColorBox.Text = selectedSite.ColorHex;
+            }
+        }
+
+        private void NewSite_Click(object sender, RoutedEventArgs e)
+        {
+            SiteListView.SelectedItem = null;
+            selectedSite = null;
+            SiteNameBox.Text = "";
+            SiteUrlBox.Text = "";
+            SiteUaBox.Text = "";
+            SiteGlyphBox.Text = "";
+            SiteColorBox.Text = "";
+        }
+
+        private void SaveSite_Click(object sender, RoutedEventArgs e)
+        {
+            string name = SiteNameBox.Text?.Trim();
+            string url = SiteUrlBox.Text?.Trim();
+            string ua = SiteUaBox.Text?.Trim();
+            string glyph = SiteGlyphBox.Text?.Trim();
+            string color = SiteColorBox.Text?.Trim();
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(url))
+                return;
+
+            if (selectedSite == null)
+            {
+                var newSite = new SiteOption(name, url, ua, glyph, "", color);
+                Sites.Add(newSite);
+            }
+            else
+            {
+                selectedSite.Name = name;
+                selectedSite.Url = url;
+                selectedSite.UserAgent = ua;
+                selectedSite.Glyph = glyph;
+                selectedSite.ColorHex = color;
+                int idx = Sites.IndexOf(selectedSite);
+                if (idx >= 0)
+                {
+                    Sites.RemoveAt(idx);
+                    Sites.Insert(idx, selectedSite);
+                }
+            }
+
+            SiteSettingsHelper.SaveSites(Sites.ToList());
+        }
+
+        private void RemoveSite_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedSite != null && Sites.Contains(selectedSite))
+            {
+                Sites.Remove(selectedSite);
+                SiteSettingsHelper.SaveSites(Sites.ToList());
+                NewSite_Click(sender, e);
+            }
+        }
     }
 }

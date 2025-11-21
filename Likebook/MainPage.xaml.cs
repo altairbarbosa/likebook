@@ -6,6 +6,7 @@ using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using System.Collections.Generic;
 using System.Globalization;
 using Windows.UI;
 using Windows.UI.Core;
@@ -133,6 +134,17 @@ namespace Likebook
         private void LikebookWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
             progressBar.IsIndeterminate = true;
+
+            if (args.Uri != null)
+            {
+                var resolved = ResolveBrandColor(args.Uri);
+                if (resolved.HasValue)
+                {
+                    siteColor = resolved.Value;
+                    localSettings.Values["lastSiteColor"] = ColorToHex(siteColor);
+                    UpdateChromeColors();
+                }
+            }
         }
 
         private async void LikebookWebView_LoadCompleted(object sender, NavigationEventArgs e)
@@ -464,5 +476,37 @@ namespace Likebook
 
         private static bool IsFacebook(string url)
         { return url != null && url.Contains("facebook.com"); }
+
+        private Color? ResolveBrandColor(Uri uri)
+        {
+            if (uri == null || string.IsNullOrEmpty(uri.Host))
+                return null;
+
+            var brandMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "youtube.com", "#FF0000" },
+                { "m.youtube.com", "#FF0000" },
+                { "facebook.com", "#3b5998" },
+                { "m.facebook.com", "#3b5998" },
+                { "instagram.com", "#C13584" },
+                { "m.instagram.com", "#C13584" },
+                { "twitter.com", "#000000" },
+                { "mobile.twitter.com", "#000000" },
+                { "x.com", "#000000" }
+            };
+
+            foreach (var kv in brandMap)
+            {
+                if (uri.Host.EndsWith(kv.Key, StringComparison.OrdinalIgnoreCase))
+                {
+                    return ToColor(kv.Value);
+                }
+            }
+
+            return null;
+        }
+
+        private static string ColorToHex(Color color)
+        { return $"#{color.R:X2}{color.G:X2}{color.B:X2}"; }
     }
 }
