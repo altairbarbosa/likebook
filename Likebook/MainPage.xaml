@@ -14,7 +14,7 @@
             <AppBarButton x:Uid="topButton" Name="topButton" Icon="Up" Click="TopButton_Click"/>
             <AppBarButton x:Uid="refreshButton" Name="refreshButton" Icon="Refresh" Click="RefreshButton_Click"/>
             <AppBarButton x:Uid="homeButton" Name="homeButton" Icon="Home" Click="HomeButton_Click"/>
-            <AppBarButton Icon="AllApps" Label="Hub" Click="HubButton_Click"/>
+            <AppBarButton x:Uid="hubButton" Name="hubButton" Icon="AllApps" Label="Hub" Click="HubButton_Click"/>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="saveButton" Name="saveButton" Icon="Save" Click="SaveButton_Click"/>
                 <AppBarButton x:Uid="clipButton" Name="clipButton" Icon="Copy" Click="ClipButton_Click"/>

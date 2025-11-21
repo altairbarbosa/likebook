@@ -6,6 +6,7 @@ using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using System.Globalization;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
@@ -182,6 +183,7 @@ namespace Likebook
                 }
 
             await likebookWebView.InvokeScriptAsync("eval", arguments: new[] { "javascript:function addStyleString(str) { var node = document.createElement('style'); node.innerHTML = " + "str; document.body.appendChild(node); } addStyleString('" + cssToApply + "');" });
+            await TryApplyThemeColorFromPage();
         }
 
         private void LikebookWebView_NewWindowRequested(WebView sender, WebViewNewWindowRequestedEventArgs e)
@@ -389,20 +391,75 @@ namespace Likebook
             hex = hex.Replace("#", string.Empty);
             if (hex.Length == 6)
             {
-                byte r = Convert.ToByte(hex.Substring(0, 2), 16);
-                byte g = Convert.ToByte(hex.Substring(2, 2), 16);
-                byte b = Convert.ToByte(hex.Substring(4, 2), 16);
+                byte r = byte.Parse(hex.Substring(0, 2), NumberStyles.HexNumber);
+                byte g = byte.Parse(hex.Substring(2, 2), NumberStyles.HexNumber);
+                byte b = byte.Parse(hex.Substring(4, 2), NumberStyles.HexNumber);
                 return Color.FromArgb(255, r, g, b);
             }
             if (hex.Length == 8)
             {
-                byte a = Convert.ToByte(hex.Substring(0, 2), 16);
-                byte r = Convert.ToByte(hex.Substring(2, 2), 16);
-                byte g = Convert.ToByte(hex.Substring(4, 2), 16);
-                byte b = Convert.ToByte(hex.Substring(6, 2), 16);
+                byte a = byte.Parse(hex.Substring(0, 2), NumberStyles.HexNumber);
+                byte r = byte.Parse(hex.Substring(2, 2), NumberStyles.HexNumber);
+                byte g = byte.Parse(hex.Substring(4, 2), NumberStyles.HexNumber);
+                byte b = byte.Parse(hex.Substring(6, 2), NumberStyles.HexNumber);
                 return Color.FromArgb(a, r, g, b);
             }
             return Colors.Black;
+        }
+
+        private bool TryParseColorString(string input, out Color color)
+        {
+            color = Colors.Black;
+            if (string.IsNullOrWhiteSpace(input))
+                return false;
+
+            input = input.Trim();
+
+            if (input.StartsWith("#"))
+            {
+                color = ToColor(input);
+                return true;
+            }
+
+            if (input.StartsWith("rgb", StringComparison.OrdinalIgnoreCase))
+            {
+                var cleaned = input.Replace("rgba", string.Empty, StringComparison.OrdinalIgnoreCase)
+                                   .Replace("rgb", string.Empty, StringComparison.OrdinalIgnoreCase)
+                                   .Replace("(", string.Empty).Replace(")", string.Empty);
+                var parts = cleaned.Split(',');
+                if (parts.Length >= 3 &&
+                    byte.TryParse(parts[0].Trim(), out byte r) &&
+                    byte.TryParse(parts[1].Trim(), out byte g) &&
+                    byte.TryParse(parts[2].Trim(), out byte b))
+                {
+                    byte a = 255;
+                    if (parts.Length >= 4 && byte.TryParse(parts[3].Trim(), out byte parsedA))
+                        a = parsedA;
+
+                    color = Color.FromArgb(a, r, g, b);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private async System.Threading.Tasks.Task TryApplyThemeColorFromPage()
+        {
+            try
+            {
+                string colorString = await likebookWebView.InvokeScriptAsync("eval", new[] { "(function(){var m=document.querySelector('meta[name=\"theme-color\"]'); return m ? m.content : '';})()" });
+                if (TryParseColorString(colorString, out Color parsed))
+                {
+                    siteColor = parsed;
+                    localSettings.Values["lastSiteColor"] = colorString;
+                    UpdateChromeColors();
+                }
+            }
+            catch
+            {
+                // ignore script errors to keep navigation flowing
+            }
         }
 
         private static bool IsFacebook(string url)
