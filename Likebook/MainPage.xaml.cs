@@ -18,7 +18,10 @@ namespace Likebook
 {
     public sealed partial class MainPage
     {
-        readonly string urlLikebook = "https://www.facebook.com/";
+        private const string DefaultFacebookUrl = "https://www.facebook.com/";
+        private string startUrl = DefaultFacebookUrl;
+        private string overrideUserAgent;
+        private bool hasNavigated;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         ApplicationView view = ApplicationView.GetForCurrentView();
@@ -26,8 +29,6 @@ namespace Likebook
         public MainPage()
         {
             InitializeComponent();
-            UserAgent();
-            GoHome();
 
             likebookWebView.ContainsFullScreenElementChanged += WebView_ContainsFullScreenElementChanged;
 
@@ -64,17 +65,47 @@ namespace Likebook
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            if (e.Parameter is SiteOption site)
+            {
+                startUrl = site.Url;
+                overrideUserAgent = site.UserAgent;
+            }
+            else
+            {
+                startUrl = localSettings.Values["lastSiteUrl"] as string ?? DefaultFacebookUrl;
+                overrideUserAgent = localSettings.Values["lastSiteUserAgent"] as string;
+            }
+
+            UserAgent();
+
+            if (!hasNavigated)
+            {
+                GoHome();
+                hasNavigated = true;
+            }
+        }
+
         private void UserAgent()
         {
-            object value = localSettings.Values["link"];
+            string selectedUserAgent = overrideUserAgent;
 
-            if (value == null)
+            if (string.IsNullOrEmpty(selectedUserAgent))
+            {
+                object value = localSettings.Values["link"];
+                selectedUserAgent = value?.ToString();
+            }
+
+            if (string.IsNullOrEmpty(selectedUserAgent))
             {
                 UserAgentHelper.SetDefaultUserAgent("Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0");
             }
             else
             {
-                UserAgentHelper.SetDefaultUserAgent('\u0022' + value.ToString() + '\u0022');
+                UserAgentHelper.SetDefaultUserAgent('\u0022' + selectedUserAgent + '\u0022');
             }
         }
 
@@ -212,13 +243,27 @@ namespace Likebook
 
         private void GoHome()
         {
-            if (!localSettings.Values.ContainsKey("showRecentNews"))
-                likebookWebView.Navigate(new Uri(urlLikebook));
+            string targetUrl = startUrl ?? DefaultFacebookUrl;
+
+            if (IsFacebook(targetUrl))
+            {
+                if (!localSettings.Values.ContainsKey("showRecentNews"))
+                {
+                    likebookWebView.Navigate(new Uri(targetUrl));
+                }
+                else if ((bool)localSettings.Values["showRecentNews"])
+                {
+                    likebookWebView.Navigate(new Uri(targetUrl + "?sk=h_chr"));
+                }
+                else
+                {
+                    likebookWebView.Navigate(new Uri(targetUrl + "?sk=h_nor"));
+                }
+            }
             else
-                if ((bool)localSettings.Values["showRecentNews"])
-                likebookWebView.Navigate(new Uri(urlLikebook + "?sk=h_chr"));
-            else
-                likebookWebView.Navigate(new Uri(urlLikebook + "?sk=h_nor"));
+            {
+                likebookWebView.Navigate(new Uri(targetUrl));
+            }
         }
 
         private async void TopButton_Click(object sender, RoutedEventArgs e)
@@ -309,5 +354,8 @@ namespace Likebook
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         { Frame.Navigate(typeof(SettingPage)); }
+
+        private static bool IsFacebook(string url)
+        { return url != null && url.Contains("facebook.com"); }
     }
 }
