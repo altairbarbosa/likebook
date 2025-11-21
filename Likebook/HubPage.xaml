@@ -5,8 +5,8 @@
     xmlns:local="using:Likebook">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="24,24,24,12" Spacing="16">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="12">
+        <StackPanel Margin="24,24,24,12">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                 <FontIcon Glyph="&#xE12B;" FontSize="28"/>
                 <TextBlock Text="Likebook Hub" FontSize="32" FontWeight="SemiBold"/>
             </StackPanel>
@@ -26,7 +26,12 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local:SiteOption">
                         <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="8" Padding="16" Margin="6" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                            <StackPanel HorizontalAlignment="Center" Spacing="10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <StackPanel.Resources>
+                                    <Style TargetType="FrameworkElement">
+                                        <Setter Property="Margin" Value="0,4,0,0"/>
+                                    </Style>
+                                </StackPanel.Resources>
                                 <FontIcon Glyph="{x:Bind Glyph}" FontSize="32"/>
                                 <TextBlock Text="{x:Bind Name}" FontSize="16" TextAlignment="Center"/>
                                 <TextBlock Text="{x:Bind Description}" FontSize="12" Opacity="0.7" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="200"/>
