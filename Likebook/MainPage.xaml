@@ -5,15 +5,16 @@
 
     <Grid>
         <WebView x:Name="likebookWebView" NavigationStarting="LikebookWebView_NavigationStarting" NewWindowRequested="LikebookWebView_NewWindowRequested" LoadCompleted="LikebookWebView_LoadCompleted" NavigationFailed="LikebookWebView_NavigationFailed" PermissionRequested="LikebookWebView_PermissionRequested"/>
-        <ProgressBar x:Name="progressBar" Height="10" VerticalAlignment="Bottom" Background="Transparent" Foreground="#3b5998"/>
+        <ProgressBar x:Name="progressBar" Height="10" VerticalAlignment="Bottom" Background="Transparent"/>
     </Grid>
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch" Background="#3b5998">
+        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch">
             <AppBarButton x:Uid="backButton" Name="backButton" Icon="Back" Click="BackButton_Click"/>
             <AppBarButton x:Uid="topButton" Name="topButton" Icon="Up" Click="TopButton_Click"/>
             <AppBarButton x:Uid="refreshButton" Name="refreshButton" Icon="Refresh" Click="RefreshButton_Click"/>
             <AppBarButton x:Uid="homeButton" Name="homeButton" Icon="Home" Click="HomeButton_Click"/>
+            <AppBarButton Icon="AllApps" Label="Hub" Click="HubButton_Click" Name="hubButton"/>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="saveButton" Name="saveButton" Icon="Save" Click="SaveButton_Click"/>
                 <AppBarButton x:Uid="clipButton" Name="clipButton" Icon="Copy" Click="ClipButton_Click"/>

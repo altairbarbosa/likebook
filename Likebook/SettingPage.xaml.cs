@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
@@ -18,35 +20,15 @@ namespace Likebook
     public sealed partial class SettingPage
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        public ObservableCollection<SiteOption> Sites { get; } = new ObservableCollection<SiteOption>();
+        private SiteOption selectedSite;
 
         public SettingPage()
         {
             InitializeComponent();
+            InitializeSites();
+            InitializeUserAgentCombo();
             LoadSavedValue();
-
-            Dictionary<string, string> country = new Dictionary<string, string>
-            {
-                { "Chrome", "Mozilla/5.0 (Linux; Android 12; Pixel 5 XL build/Beta6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.999 Safari/537.36" },
-
-                { "EDGE Mobile", "Mozilla/5.0 (Windows Mobile 10.0; Android 4.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Mobile Safari/537.36 Edg/80.0.320.0" },
-
-                { "Firefox", "Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0" },
-                { "Firefox Focus", "Mozilla/5.0 (iPhone; CPU iPhone OS 15 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Focus/9.0 Mobile/15F79" },
-
-                { "IE Mobile", "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0;) like iPhone OS 7 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537" },
-
-                { "Opera Mobile", "Mozilla/5.0 (Linux; Android 9.0.0; SM-J701F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.158 Mobile Safari/537.36 OPR/47.0.2249.129321" },
-
-                { "Safari on iPad", "Mozilla/5.0 (iPad; CPU OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
-                { "Safari on iPhone", "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
-
-                { "Samsung Browser", "Mozilla/5.0 (Linux; Tizen 4.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/56.0.2924.0 Mobile Safari/537.36" },
-            };
-
-            UserAgent.ItemsSource = country;
-
-            UserAgent.SelectedValuePath = "Value";
-            UserAgent.DisplayMemberPath = "Key";
 
             if (localSettings.Values.ContainsKey("commandbar") && (bool)localSettings.Values["commandbar"])
             {
@@ -74,11 +56,28 @@ namespace Likebook
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
-            localSettings.Values["link"] = comboBox.SelectedValue.ToString();
+            if (comboBox?.SelectedValue != null)
+            {
+                localSettings.Values["link"] = comboBox.SelectedValue.ToString();
+            }
         }
 
         private void LoadSavedValue()
         {
+            if (localSettings.Values.ContainsKey("link"))
+            {
+                UserAgent.SelectedValue = localSettings.Values["link"];
+            }
+            else
+            {
+                // default to first item and persist it so it is restored on next launch
+                UserAgent.SelectedIndex = 0;
+                var selected = UserAgent.SelectedValue?.ToString();
+                if (!string.IsNullOrEmpty(selected))
+                {
+                    localSettings.Values["link"] = selected;
+                }
+            }
             if (localSettings.Values.ContainsKey("fullScreen"))
                 fullScreen.IsOn = (bool)localSettings.Values["fullScreen"];
             if (localSettings.Values.ContainsKey("blockTopBar"))
@@ -170,6 +169,26 @@ namespace Likebook
             }
         }
 
+        private void InitializeUserAgentCombo()
+        {
+            Dictionary<string, string> userAgents = new Dictionary<string, string>
+            {
+                { "Chrome", "Mozilla/5.0 (Linux; Android 12; Pixel 5 XL build/Beta6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.9999.999 Safari/537.36" },
+                { "EDGE Mobile", "Mozilla/5.0 (Windows Mobile 10.0; Android 4.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3952.0 Mobile Safari/537.36 Edg/80.0.320.0" },
+                { "Firefox", "Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0" },
+                { "Firefox Focus", "Mozilla/5.0 (iPhone; CPU iPhone OS 15 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Focus/9.0 Mobile/15F79" },
+                { "IE Mobile", "Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0;) like iPhone OS 7 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537" },
+                { "Opera Mobile", "Mozilla/5.0 (Linux; Android 9.0.0; SM-J701F Build/M1AJQ; wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.158 Mobile Safari/537.36 OPR/47.0.2249.129321" },
+                { "Safari on iPad", "Mozilla/5.0 (iPad; CPU OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
+                { "Safari on iPhone", "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148" },
+                { "Samsung Browser", "Mozilla/5.0 (Linux; Tizen 4.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.1 Chrome/56.0.2924.0 Mobile Safari/537.36" },
+            };
+
+            UserAgent.ItemsSource = userAgents;
+            UserAgent.SelectedValuePath = "Value";
+            UserAgent.DisplayMemberPath = "Key";
+        }
+
         private async void ClearAppButton_Click(object sender, RoutedEventArgs e)
         {
             await WebView.ClearTemporaryWebDataAsync();
@@ -197,6 +216,92 @@ namespace Likebook
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
-        { Frame.Navigate(typeof(MainPage)); }
+        {
+            if (Frame.CanGoBack)
+                Frame.GoBack();
+            else
+                Frame.Navigate(typeof(HubPage));
+        }
+
+        private void HubButton_Click(object sender, RoutedEventArgs e)
+        { Frame.Navigate(typeof(HubPage)); }
+
+        private void InitializeSites()
+        {
+            Sites.Clear();
+            foreach (var site in SiteSettingsHelper.GetSites())
+            {
+                Sites.Add(site);
+            }
+            SiteListView.ItemsSource = Sites;
+        }
+
+        private void SiteListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedSite = SiteListView.SelectedItem as SiteOption;
+            if (selectedSite != null)
+            {
+                SiteNameBox.Text = selectedSite.Name;
+                SiteUrlBox.Text = selectedSite.Url;
+                SiteUaBox.Text = selectedSite.UserAgent;
+                SiteGlyphBox.Text = selectedSite.Glyph;
+                SiteColorBox.Text = selectedSite.ColorHex;
+            }
+        }
+
+        private void NewSite_Click(object sender, RoutedEventArgs e)
+        {
+            SiteListView.SelectedItem = null;
+            selectedSite = null;
+            SiteNameBox.Text = "";
+            SiteUrlBox.Text = "";
+            SiteUaBox.Text = "";
+            SiteGlyphBox.Text = "";
+            SiteColorBox.Text = "";
+        }
+
+        private void SaveSite_Click(object sender, RoutedEventArgs e)
+        {
+            string name = SiteNameBox.Text?.Trim();
+            string url = SiteUrlBox.Text?.Trim();
+            string ua = SiteUaBox.Text?.Trim();
+            string glyph = SiteGlyphBox.Text?.Trim();
+            string color = SiteColorBox.Text?.Trim();
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(url))
+                return;
+
+            if (selectedSite == null)
+            {
+                var newSite = new SiteOption(name, url, ua, glyph, "", color);
+                Sites.Add(newSite);
+            }
+            else
+            {
+                selectedSite.Name = name;
+                selectedSite.Url = url;
+                selectedSite.UserAgent = ua;
+                selectedSite.Glyph = glyph;
+                selectedSite.ColorHex = color;
+                int idx = Sites.IndexOf(selectedSite);
+                if (idx >= 0)
+                {
+                    Sites.RemoveAt(idx);
+                    Sites.Insert(idx, selectedSite);
+                }
+            }
+
+            SiteSettingsHelper.SaveSites(Sites.ToList());
+        }
+
+        private void RemoveSite_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedSite != null && Sites.Contains(selectedSite))
+            {
+                Sites.Remove(selectedSite);
+                SiteSettingsHelper.SaveSites(Sites.ToList());
+                NewSite_Click(sender, e);
+            }
+        }
     }
 }
