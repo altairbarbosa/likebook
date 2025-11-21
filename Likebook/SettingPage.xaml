@@ -90,9 +90,15 @@
                         <Button x:Uid="clearAppButton" Name="clearButton" Click="ClearAppButton_Click"/>
                     </StackPanel>
                     <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"/>
+                </StackPanel>
+            </ScrollViewer>
+        </PivotItem>
 
-                    <TextBlock Text="Sites (Hub)" FontSize="20" Margin="0,8,0,4"/>
-                    <ListView x:Name="SiteListView" SelectionMode="Single" SelectionChanged="SiteListView_SelectionChanged" Height="200">
+        <PivotItem Header="Sites" FontSize="30">
+            <ScrollViewer>
+                <StackPanel Padding="16">
+                    <TextBlock Text="Sites (Hub)" FontSize="20" Margin="0,0,0,4"/>
+                    <ListView x:Name="SiteListView" SelectionMode="Single" SelectionChanged="SiteListView_SelectionChanged" Height="220">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -111,7 +117,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <StackPanel Margin="0,8,0,0">
+                    <StackPanel Margin="0,12,0,0">
                         <TextBox Header="Nome" x:Name="SiteNameBox"/>
                         <TextBox Header="URL" x:Name="SiteUrlBox"/>
                         <TextBox Header="User-Agent" x:Name="SiteUaBox"/>
@@ -119,7 +125,7 @@
                         <TextBox Header="Cor (hex)" x:Name="SiteColorBox" PlaceholderText="#3b5998"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
                         <StackPanel.Resources>
                             <Style TargetType="Button">
                                 <Setter Property="Margin" Value="0,0,10,0"/>
@@ -129,8 +135,6 @@
                         <Button Content="Salvar" Click="SaveSite_Click"/>
                         <Button Content="Remover" Click="RemoveSite_Click"/>
                     </StackPanel>
-
-                    <AppBarSeparator HorizontalAlignment="Left" VerticalAlignment="Center" Height="10"/>
                 </StackPanel>
             </ScrollViewer>
         </PivotItem>
