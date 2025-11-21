@@ -111,7 +111,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <StackPanel Margin="0,8,0,0" Spacing="8">
+                    <StackPanel Margin="0,8,0,0">
                         <TextBox Header="Nome" x:Name="SiteNameBox"/>
                         <TextBox Header="URL" x:Name="SiteUrlBox"/>
                         <TextBox Header="User-Agent" x:Name="SiteUaBox"/>
@@ -119,7 +119,12 @@
                         <TextBox Header="Cor (hex)" x:Name="SiteColorBox" PlaceholderText="#3b5998"/>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,8,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="0,0,10,0"/>
+                            </Style>
+                        </StackPanel.Resources>
                         <Button Content="Novo" Click="NewSite_Click"/>
                         <Button Content="Salvar" Click="SaveSite_Click"/>
                         <Button Content="Remover" Click="RemoveSite_Click"/>
