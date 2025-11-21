@@ -1,19 +1,22 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
+using muxc = Microsoft.UI.Xaml.Controls;
+using Microsoft.Web.WebView2.Core;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Display;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using System.Collections.Generic;
-using System.Globalization;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Likebook
@@ -24,7 +27,10 @@ namespace Likebook
         private string startUrl = DefaultFacebookUrl;
         private string overrideUserAgent;
         private bool hasNavigated;
-        private Windows.UI.Color siteColor = Windows.UI.ColorHelper.FromArgb(255, 59, 89, 152);
+        private Color siteColor = ColorHelper.FromArgb(255, 59, 89, 152);
+        private bool useEdge;
+        private muxc.WebView2 edge;
+        private string currentUserAgent;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         ApplicationView view = ApplicationView.GetForCurrentView();
@@ -33,12 +39,37 @@ namespace Likebook
         {
             InitializeComponent();
 
-            likebookWebView.ContainsFullScreenElementChanged += WebView_ContainsFullScreenElementChanged;
+            useEdge = ApiInformation.IsTypePresent("Microsoft.UI.Xaml.Controls.WebView2");
+            edge = edgeWebView;
+
+            if (useEdge)
+            {
+                likebookWebView.Visibility = Visibility.Collapsed;
+                edgeWebView.Visibility = Visibility.Visible;
+                _ = InitializeEdgeWebView();
+            }
+            else
+            {
+                likebookWebView.Visibility = Visibility.Visible;
+                edgeWebView.Visibility = Visibility.Collapsed;
+                likebookWebView.ContainsFullScreenElementChanged += WebView_ContainsFullScreenElementChanged;
+            }
 
             ApplyChromePreferences();
             UpdateChromeColors();
 
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
+        }
+
+        private void UserAgent()
+        {
+            currentUserAgent = ResolveUserAgent();
+            UserAgentHelper.SetDefaultUserAgent('\u0022' + currentUserAgent + '\u0022');
+
+            if (useEdge && edge?.CoreWebView2?.Settings != null)
+            {
+                edge.CoreWebView2.Settings.UserAgent = currentUserAgent;
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -59,7 +90,7 @@ namespace Likebook
                 startUrl = localSettings.Values["lastSiteUrl"] as string ?? DefaultFacebookUrl;
                 overrideUserAgent = localSettings.Values["lastSiteUserAgent"] as string;
                 string savedColor = localSettings.Values["lastSiteColor"] as string;
-                siteColor = !string.IsNullOrEmpty(savedColor) ? ToColor(savedColor) : Windows.UI.ColorHelper.FromArgb(255, 59, 89, 152);
+                siteColor = !string.IsNullOrEmpty(savedColor) ? ToColor(savedColor) : ColorHelper.FromArgb(255, 59, 89, 152);
             }
 
             UserAgent();
@@ -73,23 +104,24 @@ namespace Likebook
             UpdateChromeColors();
         }
 
-        private void UserAgent()
+        private async Task InitializeEdgeWebView()
         {
-            string selectedUserAgent = overrideUserAgent;
-
-            if (string.IsNullOrEmpty(selectedUserAgent))
+            try
             {
-                object value = localSettings.Values["link"];
-                selectedUserAgent = value?.ToString();
+                await edge.EnsureCoreWebView2Async();
+                edge.CoreWebView2.Settings.IsStatusBarEnabled = false;
+                edge.CoreWebView2.Settings.AreDevToolsEnabled = false;
+                edge.CoreWebView2.ContainsFullScreenElementChanged += Edge_ContainsFullScreenElementChanged;
+                string ua = ResolveUserAgent();
+                if (!string.IsNullOrEmpty(ua))
+                    edge.CoreWebView2.Settings.UserAgent = ua;
             }
-
-            if (string.IsNullOrEmpty(selectedUserAgent))
+            catch
             {
-                UserAgentHelper.SetDefaultUserAgent("Mozilla/5.0 (Android 4; Mobile; rv:90.0) Gecko/90.0 Firefox/90.0");
-            }
-            else
-            {
-                UserAgentHelper.SetDefaultUserAgent('\u0022' + selectedUserAgent + '\u0022');
+                useEdge = false;
+                edgeWebView.Visibility = Visibility.Collapsed;
+                likebookWebView.Visibility = Visibility.Visible;
+                likebookWebView.ContainsFullScreenElementChanged += WebView_ContainsFullScreenElementChanged;
             }
         }
 
@@ -97,13 +129,17 @@ namespace Likebook
         {
             Frame frame = Window.Current.Content as Frame;
 
-            if (frame.CanGoBack || likebookWebView.CanGoBack)
+            if (frame.CanGoBack || CanGoBackInWebView())
             {
                 e.Handled = true;
 
-                if (likebookWebView.CanGoBack)
-                    likebookWebView.GoBack();
-
+                if (CanGoBackInWebView())
+                {
+                    if (useEdge)
+                        edge.GoBack();
+                    else
+                        likebookWebView.GoBack();
+                }
 
                 if (frame.CanGoBack)
                     frame.GoBack();
@@ -132,77 +168,22 @@ namespace Likebook
         }
 
         private void LikebookWebView_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
-        {
-            progressBar.IsIndeterminate = true;
+        { HandleNavigationStarting(args.Uri); }
 
-            if (args.Uri != null)
-            {
-                var resolved = ResolveBrandColor(args.Uri);
-                if (resolved.HasValue)
-                {
-                    siteColor = resolved.Value;
-                    localSettings.Values["lastSiteColor"] = ColorToHex(siteColor);
-                    UpdateChromeColors();
-                }
-            }
-        }
+        private void EdgeWebView_NavigationStarting(muxc.WebView2 sender, CoreWebView2NavigationStartingEventArgs args)
+        { HandleNavigationStarting(new Uri(args.Uri)); }
 
         private async void LikebookWebView_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = likebookWebView.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        { await ApplyPageStylingAsync(); }
 
-            progressBar.IsIndeterminate = false;
-
-            string cssToApply = "";
-
-            cssToApply += ".acy {display:none !important;} ._5d25, html ._5d25, ._5d25.acw {display:none !important;} article[data-ft*=ei]{display: none !important;} .ego{display: none !important;}";
-
-            if (localSettings.Values.ContainsKey("blockTopBar"))
-                if ((bool)localSettings.Values["blockTopBar"])
-                {
-                    cssToApply += "#header {position: fixed; z-index: 12; top: 0px;} #root {padding-top: 80px;} ._a-5 {padding-top: 44px;} .item.more {position:fixed; bottom: 0px; text-align: center !important;}";
-
-                    var h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44;
-                    float density = DisplayInformation.GetForCurrentView().LogicalDpi;
-                    int barHeight = (int)(h / density);
-
-                    cssToApply += ".flyout {max-height:" + barHeight + "px; overflow-y:scroll;}";
-                }
-            if (localSettings.Values.ContainsKey("centerTextPosts"))
-                if ((bool)localSettings.Values["centerTextPosts"]) cssToApply += "._5rgt._5msi {text-align: center;}";
-            if (localSettings.Values.ContainsKey("addSpaceBetweenPosts"))
-                if ((bool)localSettings.Values["addSpaceBetweenPosts"]) cssToApply += "article {margin-top: 50px !important;}";
-            if (localSettings.Values.ContainsKey("darkTheme"))
-                if ((bool)localSettings.Values["darkTheme"])
-                {
-                    commandBar.RequestedTheme = ElementTheme.Dark;
-                    commandBar.Background = new SolidColorBrush(siteColor);
-
-                    cssToApply += "body * { border-color: transparent !important; color: #888 !important; background-color: transparent !important; } html, body, ._2v9s { background-color: #000 !important; } .storyStream, ._4nmh, ._4u3j, ._35aq, ._146a, ._5pxb, ._55wq, ._53_-, ._55ws, ._u42, .jx-result, .jx-typeahead-results, ._56bt, ._52x7, ._vqv, ._5rgt, .popover_flyout, .flyout, #m_newsfeed_stream, ._55wo, ._3iln, .mentions-suggest, #header, ._xy, ._bgx, .acb, .acg, .aclb, .nontouch ._5ui0, input[type=text], .acw, ._5up8, ._5kgn, .tlLinkContainer, .aps, .jewel .flyout .header, .appCenterCategorySelectorButton, .tlBody, #timelineBody, .timelineX, .timeline .feed, .timeline .tlPrelude, .timeline .tlFeedPlaceholder, .touch ._5c9u, .touch ._5ca9, .innerLink, ._5dy4, ._52x3, #m_group_stories_container, .albums, .subpage, ._uwu, ._uww, .scrollAreaBody, .al, .apl, .structuredPublisher, .groupChromeView, ._djv, ._bjg, ._5kgn, ._3f50, ._55wm, ._58f0 { background: #000 !important; text-shadow: 0px 0px 2px #000 !important; -webkit-transition: background .2s, box-shadow .4s, border-color .2s !important; /* Safari */ transition: background .2s, box-shadow .4s, border-color .2s !important; transition-timing-function: linear !important; } .composerLinkText, .fcg { color: #d2d2d2 !important; } ._56bu, ._56bs { background: #202020 !important; } .touch ._56bu::before, .touch.wp.x1-5 ._56bu::before, .touch.wp.x2 ._56bu::before{ background-color: #202020 !important; text-shadow: 0px 0px 2px #000 !important; } /* New feed info*/ ._15nz { background-color: #121212 !important; } ._4g33, ._4g34 ._1svy { box-shadow: none !important; background: none !important; border: none !important; } ._15ny::after { border: none !important; } /* load spinner */ ._50cg._2ss { box-shadow:  none !important; background: none !important; border: none !important; } /* comments */ ._5c4t ._1g06 { color: #ccc !important; } /* new message dialog */ ._52z5 { } /* white text */ body, .touch ._2ya3, ._4qas, ._4qau, .composerTextSelected, .composerInput, .mentions-input, input[type=text], ._5001, .timeline .cover .profileName, .appListTitle, ._52jd, ._52jb, ._52jg, ._5qc3, .tlActorText, .tlLinkTitle, ._5379, ._5cqn, ._592p, ._3c9l, ._4yrh, .name, .btn, .upText, .tlLinkTitleOnly, ._5rgt, ._52x2, ._52jh, ._52ja, ._56bz, ._2tbu, ._1mwn, ._55sr, ._5t6r, ._1_oe, ._52lz, ._2l5v, .inputtext, .inputpassword, .touch, .touch tr, .touch input, .touch textarea, .touch .mfsm { color: #d2d2d2 !important; } .touch ._2ya3 { border-radius: 5px; padding: 5px; } /* blue link text */ a, .actor, .mfsl, .fcw, .title, .blueName, ._5aw4, ._vqv, ._5yll, ._5qc3, ._52lz, ._4nwe, ._27vp, ._ir4, ._5wsv, ._46pa { color: #DFEFF0 !important; } /* dark important */ .acy, .nontouch ._55mb .actor-link, .nontouch a.btnD, .inlineMedia.storyAttachment { background: #304702 !important; } .statusBox, ._5whq, ._56bt, .composerInput, .mentions-input, ._bji { background: #323232 !important; } .ufiBorder, ._5as0, ._5ef_, ._35aq { border-color: #555 !important; } /* buttons */ .button>a.touchable, .btn, .touch ._5c9u, ._2l5v, ._52x1, ._tn0, ._52ja, ._5lm6 { background: #000 !important; } .flyout { border: 1px solid #000 !important; } /* context menu */ ._5c0e, ._5bn_ { background: #4e4e4e !important; } article, ._4o50, ._3wjp, ._usq, ._55wq, ._400s { border: 1px dotted #383838 !important; border-radius: 4px; } .messages-flyout-item, .more, ._4ut2, ._52we { border-top: 1px dotted #383838 !important; } ._53_- { border-bottom: 1px dotted #383838 !important; } ._1_oa, ._bmx, ._52x1 { border-bottom: 1px dotted #383838 !important; } article h3 { color: #999 !important; } ._4756, ._4qax { background-color: #1F1F1F !important; } /* no border */ .aclb, ._53_-, ._52x6, ._52x1, ._2l5v, ._tn0, ._52ja, ._5lm6 { border-top: 0px; border-bottom: 0px; } ._59te.popoverOpen, ._59te.isActivem, ._59te { background: #000000; border-bottom: 1px solid #424242; border-right: 1px solid #424242; } ._2lut { border: 1px dotted #e9eaed !important; } /* badges */ ._59tg { background:#da2929 !important; color:#ffffff !important; } /* new messages */ .chatHighlight{ -webkit-animation-duration:0s; } /* unread */ .aclb { background: #323232 !important; }";
-
-                    if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
-                    {
-                        ApplicationView.GetForCurrentView().TitleBar.BackgroundColor = siteColor;
-                        ApplicationView.GetForCurrentView().TitleBar.ButtonBackgroundColor = siteColor;
-                    }
-
-                    if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
-                    {
-                        StatusBar.GetForCurrentView().BackgroundColor = siteColor;
-                        StatusBar.GetForCurrentView().ForegroundColor = Colors.White;
-                        StatusBar.GetForCurrentView().BackgroundOpacity = 1;
-                    }
-                }
-
-            await likebookWebView.InvokeScriptAsync("eval", arguments: new[] { "javascript:function addStyleString(str) { var node = document.createElement('style'); node.innerHTML = " + "str; document.body.appendChild(node); } addStyleString('" + cssToApply + "');" });
-            await TryApplyThemeColorFromPage();
-        }
+        private async void EdgeWebView_NavigationCompleted(muxc.WebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+        { await ApplyPageStylingAsync(); }
 
         private void LikebookWebView_NewWindowRequested(WebView sender, WebViewNewWindowRequestedEventArgs e)
         {
-            if (e.Uri.AbsoluteUri.Contains(".gif") || e.Uri.AbsoluteUri.Contains("video"))
+            if (e.Uri.AbsoluteUri.Contains(".gif") || e.Uri.AbsoluteUri.Contains("video") || e.Uri.AbsoluteUri.Contains(".jpg") || e.Uri.AbsoluteUri.Contains("photo"))
             {
-                likebookWebView.Navigate(e.Uri);
+                NavigateTo(e.Uri);
                 e.Handled = true;
             }
 
@@ -210,15 +191,18 @@ namespace Likebook
             {
                 if (e.Uri.AbsoluteUri.Contains("http://") || e.Uri.AbsoluteUri.Contains("https://"))
                 {
-                    likebookWebView.Navigate(e.Uri);
+                    NavigateTo(e.Uri);
                     e.Handled = true;
                 }
             }
+        }
 
-            if (e.Uri.AbsoluteUri.Contains(".jpg") || e.Uri.AbsoluteUri.Contains("photo"))
+        private void EdgeWebView_NewWindowRequested(muxc.WebView2 sender, CoreWebView2NewWindowRequestedEventArgs args)
+        {
+            args.Handled = true;
+            if (Uri.TryCreate(args.Uri, UriKind.Absolute, out var target))
             {
-                likebookWebView.Navigate(e.Uri);
-                e.Handled = true;
+                NavigateTo(target);
             }
         }
 
@@ -258,6 +242,27 @@ namespace Likebook
             }
         }
 
+        private void Edge_ContainsFullScreenElementChanged(CoreWebView2 sender, object args)
+        {
+            if (sender.ContainsFullScreenElement)
+            {
+                ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
+                commandBar.Visibility = Visibility.Collapsed;
+            }
+            else if (ApplicationView.GetForCurrentView().IsFullScreenMode)
+            {
+                if (localSettings.Values.ContainsKey("fullScreen") && (bool)localSettings.Values["fullScreen"])
+                {
+                    view.TryEnterFullScreenMode();
+                }
+                else
+                {
+                    view.ExitFullScreenMode();
+                }
+                commandBar.Visibility = Visibility.Visible;
+            }
+        }
+
         private void GoHome()
         {
             string targetUrl = startUrl ?? DefaultFacebookUrl;
@@ -266,46 +271,39 @@ namespace Likebook
             {
                 if (!localSettings.Values.ContainsKey("showRecentNews"))
                 {
-                    likebookWebView.Navigate(new Uri(targetUrl));
+                    NavigateTo(new Uri(targetUrl));
                 }
                 else if ((bool)localSettings.Values["showRecentNews"])
                 {
-                    likebookWebView.Navigate(new Uri(targetUrl + "?sk=h_chr"));
+                    NavigateTo(new Uri(targetUrl + "?sk=h_chr"));
                 }
                 else
                 {
-                    likebookWebView.Navigate(new Uri(targetUrl + "?sk=h_nor"));
+                    NavigateTo(new Uri(targetUrl + "?sk=h_nor"));
                 }
             }
             else
             {
-                likebookWebView.Navigate(new Uri(targetUrl));
+                NavigateTo(new Uri(targetUrl));
             }
         }
 
         private async void TopButton_Click(object sender, RoutedEventArgs e)
-        { await likebookWebView.InvokeScriptAsync("eval", new[] { "window.scrollTo(0,0);" }); }
+        { await ScrollToTopAsync(); }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            likebookWebView.Refresh();
-        }
+        { Refresh(); }
 
         private async void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (likebookWebView.CanGoBack)
+            if (CanGoBackInWebView())
             {
-                likebookWebView.GoBack();
+                if (useEdge) edge.GoBack(); else likebookWebView.GoBack();
             }
             else
             {
                 var loader = new ResourceLoader();
-                string Title = loader.GetString("Title");
-                string ContentBack = loader.GetString("ContentBack");
-                string PrimaryButtonTextBack = loader.GetString("PrimaryButtonTextBack");
-                string SecondaryButtonTextBack = loader.GetString("SecondaryButtonTextBack");
-
-                ContentDialog BackFileDialog = new ContentDialog()
+                ContentDialog backDialog = new ContentDialog()
                 {
                     Title = loader.GetString("Title"),
                     Content = loader.GetString("ContentBack"),
@@ -313,7 +311,7 @@ namespace Likebook
                     SecondaryButtonText = loader.GetString("SecondaryButtonText")
                 };
 
-                ContentDialogResult result = await BackFileDialog.ShowAsync();
+                ContentDialogResult result = await backDialog.ShowAsync();
 
                 if (result == ContentDialogResult.Primary)
                 {
@@ -327,7 +325,8 @@ namespace Likebook
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Uri url = likebookWebView.Source;
+            Uri url = GetCurrentUri();
+            if (url == null) return;
 
             var fileName = Path.GetFileName(url.LocalPath);
             var thumbnail = RandomAccessStreamReference.CreateFromUri(url);
@@ -336,37 +335,35 @@ namespace Likebook
             await remoteFile.CopyAsync(KnownFolders.SavedPictures, fileName, NameCollisionOption.GenerateUniqueName);
 
             var loader = new ResourceLoader();
-            string saveTitleDialog = loader.GetString("Title");
-            string saveDialog = loader.GetString("saveDialog");
-            string PrimaryButtonText = loader.GetString("PrimaryButtonText");
-
-            ContentDialog SaveFileDialog = new ContentDialog()
+            ContentDialog saveDialog = new ContentDialog()
             {
                 Title = loader.GetString("Title"),
                 Content = loader.GetString("saveDialog"),
                 PrimaryButtonText = loader.GetString("PrimaryButtonText")
             };
 
-            ContentDialogResult result = await SaveFileDialog.ShowAsync();
+            await saveDialog.ShowAsync();
         }
 
         private async void ClipButton_Click(object sender, RoutedEventArgs e)
         {
-            string url = likebookWebView.Source.ToString();
+            Uri url = GetCurrentUri();
+            if (url == null) return;
+
             var dataPackage = new DataPackage();
-            dataPackage.SetText(url);
+            dataPackage.SetText(url.ToString());
             Clipboard.SetContent(dataPackage);
 
             var loader = new ResourceLoader();
 
-            ContentDialog CopyFileDialog = new ContentDialog()
+            ContentDialog copyDialog = new ContentDialog()
             {
                 Title = loader.GetString("Title"),
                 Content = loader.GetString("linkCopy"),
                 PrimaryButtonText = loader.GetString("PrimaryButtonText")
             };
 
-            ContentDialogResult result = await CopyFileDialog.ShowAsync();
+            await copyDialog.ShowAsync();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -395,85 +392,79 @@ namespace Likebook
             }
         }
 
-        private static Color ToColor(string hex)
+        private async Task ApplyPageStylingAsync()
         {
-            if (string.IsNullOrEmpty(hex))
-                return Colors.Black;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = CanGoBackInWebView() ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
 
-            hex = hex.Replace("#", string.Empty);
-            if (hex.Length == 6)
+            progressBar.IsIndeterminate = false;
+
+            string cssToApply = "";
+
+            cssToApply += ".acy {display:none !important;} ._5d25, html ._5d25, ._5d25.acw {display:none !important;} article[data-ft*=ei]{display: none !important;} .ego{display: none !important;}";
+
+            if (localSettings.Values.ContainsKey("blockTopBar") && (bool)localSettings.Values["blockTopBar"])
             {
-                byte r = byte.Parse(hex.Substring(0, 2), NumberStyles.HexNumber);
-                byte g = byte.Parse(hex.Substring(2, 2), NumberStyles.HexNumber);
-                byte b = byte.Parse(hex.Substring(4, 2), NumberStyles.HexNumber);
-                return Color.FromArgb(255, r, g, b);
+                cssToApply += "#header {position: fixed; z-index: 12; top: 0px;} #root {padding-top: 80px;} ._a-5 {padding-top: 44px;} .item.more {position:fixed; bottom: 0px; text-align: center !important;}";
+
+                var h = ApplicationView.GetForCurrentView().VisibleBounds.Height - 44;
+                float density = DisplayInformation.GetForCurrentView().LogicalDpi;
+                int barHeight = (int)(h / density);
+
+                cssToApply += ".flyout {max-height:" + barHeight + "px; overflow-y:scroll;}";
             }
-            if (hex.Length == 8)
+            if (localSettings.Values.ContainsKey("centerTextPosts") && (bool)localSettings.Values["centerTextPosts"]) cssToApply += "._5rgt._5msi {text-align: center;}";
+            if (localSettings.Values.ContainsKey("addSpaceBetweenPosts") && (bool)localSettings.Values["addSpaceBetweenPosts"]) cssToApply += "article {margin-top: 50px !important;}";
+            if (localSettings.Values.ContainsKey("darkTheme") && (bool)localSettings.Values["darkTheme"])
             {
-                byte a = byte.Parse(hex.Substring(0, 2), NumberStyles.HexNumber);
-                byte r = byte.Parse(hex.Substring(2, 2), NumberStyles.HexNumber);
-                byte g = byte.Parse(hex.Substring(4, 2), NumberStyles.HexNumber);
-                byte b = byte.Parse(hex.Substring(6, 2), NumberStyles.HexNumber);
-                return Color.FromArgb(a, r, g, b);
+                commandBar.RequestedTheme = ElementTheme.Dark;
+                commandBar.Background = new SolidColorBrush(siteColor);
+
+                cssToApply += "body * { border-color: transparent !important; color: #888 !important; background-color: transparent !important; } html, body, ._2v9s { background-color: #000 !important; } .storyStream, ._4nmh, ._4u3j, ._35aq, ._146a, ._5pxb, ._55wq, ._53_-, ._55ws, ._u42, .jx-result, .jx-typeahead-results, ._56bt, ._52x7, ._vqv, ._5rgt, .popover_flyout, .flyout, #m_newsfeed_stream, ._55wo, ._3iln, .mentions-suggest, #header, ._xy, ._bgx, .acb, .acg, .aclb, .nontouch ._5ui0, input[type=text], .acw, ._5up8, ._5kgn, .tlLinkContainer, .aps, .jewel .flyout .header, .appCenterCategorySelectorButton, .tlBody, #timelineBody, .timelineX, .timeline .feed, .timeline .tlPrelude, .timeline .tlFeedPlaceholder, .touch ._5c9u, .touch ._5ca9, .innerLink, ._5dy4, ._52x3, #m_group_stories_container, .albums, .subpage, ._uwu, ._uww, .scrollAreaBody, .al, .apl, .structuredPublisher, .groupChromeView, ._djv, ._bjg, ._5kgn, ._3f50, ._55wm, ._58f0 { background: #000 !important; text-shadow: 0px 0px 2px #000 !important; -webkit-transition: background .2s, box-shadow .4s, border-color .2s !important; /* Safari */ transition: background .2s, box-shadow .4s, border-color .2s !important; transition-timing-function: linear !important; } .composerLinkText, .fcg { color: #d2d2d2 !important; } ._56bu, ._56bs { background: #202020 !important; } .touch ._56bu::before, .touch.wp.x1-5 ._56bu::before, .touch.wp.x2 ._56bu::before{ background-color: #202020 !important; text-shadow: 0px 0px 2px #000 !important; } /* New feed info*/ ._15nz { background-color: #121212 !important; } ._4g33, ._4g34 ._1svy { box-shadow: none !important; background: none !important; border: none !important; } ._15ny::after { border: none !important; } /* load spinner */ ._50cg._2ss { box-shadow:  none !important; background: none !important; border: none !important; } /* comments */ ._5c4t ._1g06 { color: #ccc !important; } /* new message dialog */ ._52z5 { } /* white text */ body, .touch ._2ya3, ._4qas, ._4qau, .composerTextSelected, .composerInput, .mentions-input, input[type=text], ._5001, .timeline .cover .profileName, .appListTitle, ._52jd, ._52jb, ._52jg, ._5qc3, .tlActorText, .tlLinkTitle, ._5379, ._5cqn, ._592p, ._3c9l, ._4yrh, .name, .btn, .upText, .tlLinkTitleOnly, ._5rgt, ._52x2, ._52jh, ._52ja, ._56bz, ._2tbu, ._1mwn, ._55sr, ._5t6r, ._1_oe, ._52lz, ._2l5v, .inputtext, .inputpassword, .touch, .touch tr, .touch input, .touch textarea, .touch .mfsm { color: #d2d2d2 !important; } .touch ._2ya3 { border-radius: 5px; padding: 5px; } /* blue link text */ a, .actor, .mfsl, .fcw, .title, .blueName, ._5aw4, ._vqv, ._5yll, ._5qc3, ._52lz, ._4nwe, ._27vp, ._ir4, ._5wsv, ._46pa { color: #DFEFF0 !important; } /* dark important */ .acy, .nontouch ._55mb .actor-link, .nontouch a.btnD, .inlineMedia.storyAttachment { background: #304702 !important; } .statusBox, ._5whq, ._56bt, .composerInput, .mentions-input, ._bji { background: #323232 !important; } .ufiBorder, ._5as0, ._5ef_, ._35aq { border-color: #555 !important; } /* buttons */ .button>a.touchable, .btn, .touch ._5c9u, ._2l5v, ._52x1, ._tn0, ._52ja, ._5lm6 { background: #000 !important; } .flyout { border: 1px solid #000 !important; } /* context menu */ ._5c0e, ._5bn_ { background: #4e4e4e !important; } article, ._4o50, ._3wjp, ._usq, ._55wq, ._400s { border: 1px dotted #383838 !important; border-radius: 4px; } .messages-flyout-item, .more, ._4ut2, ._52we { border-top: 1px dotted #383838 !important; } ._53_- { border-bottom: 1px dotted #383838 !important; } ._1_oa, ._bmx, ._52x1 { border-bottom: 1px dotted #383838 !important; } article h3 { color: #999 !important; } ._4756, ._4qax { background-color: #1F1F1F !important; } /* no border */ .aclb, ._53_-, ._52x6, ._52x1, ._2l5v, ._tn0, ._52ja, ._5lm6 { border-top: 0px; border-bottom: 0px; } ._59te.popoverOpen, ._59te.isActivem, ._59te { background: #000000; border-bottom: 1px solid #424242; border-right: 1px solid #424242; } ._2lut { border: 1px dotted #e9eaed !important; } /* badges */ ._59tg { background:#da2929 !important; color:#ffffff !important; } /* new messages */ .chatHighlight{ -webkit-animation-duration:0s; } /* unread */ .aclb { background: #323232 !important; }";
             }
-            return Colors.Black;
+
+            await EvaluateScriptAsync("function addStyleString(str){var node=document.createElement('style');node.innerHTML=str;document.body.appendChild(node);} addStyleString(\"" + EscapeForJs(cssToApply) + "\");");
+            await TryApplyThemeColorFromPage();
         }
 
-        private bool TryParseColorString(string input, out Color color)
+        private string ResolveUserAgent()
         {
-            color = Colors.Black;
-            if (string.IsNullOrWhiteSpace(input))
-                return false;
+            string selectedUserAgent = overrideUserAgent;
 
-            input = input.Trim();
-
-            if (input.StartsWith("#"))
+            if (string.IsNullOrEmpty(selectedUserAgent))
             {
-                color = ToColor(input);
-                return true;
+                object value = localSettings.Values["link"];
+                selectedUserAgent = value?.ToString();
             }
 
-            if (input.StartsWith("rgb", StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrEmpty(selectedUserAgent))
             {
-                var cleaned = input.ToLowerInvariant()
-                                   .Replace("rgba", string.Empty)
-                                   .Replace("rgb", string.Empty)
-                                   .Replace("(", string.Empty)
-                                   .Replace(")", string.Empty);
-                var parts = cleaned.Split(',');
-                if (parts.Length >= 3 &&
-                    byte.TryParse(parts[0].Trim(), out byte r) &&
-                    byte.TryParse(parts[1].Trim(), out byte g) &&
-                    byte.TryParse(parts[2].Trim(), out byte b))
-                {
-                    byte a = 255;
-                    if (parts.Length >= 4 && byte.TryParse(parts[3].Trim(), out byte parsedA))
-                        a = parsedA;
-
-                    color = Color.FromArgb(a, r, g, b);
-                    return true;
-                }
+                selectedUserAgent = "Mozilla/5.0 (Android 14; Mobile; rv:120.0) Gecko/120.0 Firefox/120.0";
             }
 
-            return false;
+            return selectedUserAgent;
         }
 
-        private async System.Threading.Tasks.Task TryApplyThemeColorFromPage()
+        private async Task<string> EvaluateScriptAsync(string script)
         {
-            try
+            if (useEdge && edge?.CoreWebView2 != null)
             {
-                string colorString = await likebookWebView.InvokeScriptAsync("eval", new[] { "(function(){var m=document.querySelector('meta[name=\"theme-color\"]'); return m ? m.content : '';})()" });
-                if (TryParseColorString(colorString, out Color parsed))
+                var result = await edge.CoreWebView2.ExecuteScriptAsync(script);
+                if (!string.IsNullOrEmpty(result) && result.Length >= 2 && result.StartsWith("\"") && result.EndsWith("\""))
                 {
-                    siteColor = parsed;
-                    localSettings.Values["lastSiteColor"] = colorString;
-                    UpdateChromeColors();
+                    result = result.Substring(1, result.Length - 2);
                 }
+                return result;
             }
-            catch
+            else
             {
-                // ignore script errors to keep navigation flowing
+                return await likebookWebView.InvokeScriptAsync("eval", new[] { script });
             }
+        }
+
+        private string EscapeForJs(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return string.Empty;
+            return input.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\r", " ").Replace("\n", " ");
         }
 
         private static bool IsFacebook(string url)
@@ -510,5 +501,67 @@ namespace Likebook
 
         private static string ColorToHex(Color color)
         { return $"#{color.R:X2}{color.G:X2}{color.B:X2}"; }
+
+        private void HandleNavigationStarting(Uri uri)
+        {
+            progressBar.IsIndeterminate = true;
+
+            if (uri != null)
+            {
+                var resolved = ResolveBrandColor(uri);
+                if (resolved.HasValue)
+                {
+                    siteColor = resolved.Value;
+                    localSettings.Values["lastSiteColor"] = ColorToHex(siteColor);
+                    UpdateChromeColors();
+                }
+            }
+        }
+
+        private bool CanGoBackInWebView()
+        { return useEdge ? (edge?.CanGoBack ?? false) : likebookWebView.CanGoBack; }
+
+        private void NavigateTo(Uri uri)
+        {
+            if (useEdge && edge?.CoreWebView2 != null)
+            {
+                edge.Source = uri;
+            }
+            else
+            {
+                likebookWebView.Navigate(uri);
+            }
+        }
+
+        private void Refresh()
+        {
+            if (useEdge && edge?.CoreWebView2 != null)
+            {
+                edge.Reload();
+            }
+            else
+            {
+                likebookWebView.Refresh();
+            }
+        }
+
+        private async Task ScrollToTopAsync()
+        {
+            if (useEdge && edge?.CoreWebView2 != null)
+            {
+                await edge.CoreWebView2.ExecuteScriptAsync("window.scrollTo(0,0);");
+            }
+            else
+            {
+                await likebookWebView.InvokeScriptAsync("eval", new[] { "window.scrollTo(0,0);" });
+            }
+        }
+
+        private Uri GetCurrentUri()
+        {
+            if (useEdge && edge != null)
+                return edge.Source;
+            return likebookWebView.Source;
+        }
     }
 }
