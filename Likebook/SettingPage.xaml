@@ -148,8 +148,9 @@
     </Pivot>
 
     <Page.BottomAppBar>
-        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch" Background="#3b5998">
+        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch">
             <AppBarButton x:Uid="backButton" Name="backButton" Icon="Back" Click="BackButton_Click"/>
+            <AppBarButton Icon="AllApps" Label="Hub" Click="HubButton_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

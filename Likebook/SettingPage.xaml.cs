@@ -217,5 +217,8 @@ namespace Likebook
             else
                 Frame.Navigate(typeof(HubPage));
         }
+
+        private void HubButton_Click(object sender, RoutedEventArgs e)
+        { Frame.Navigate(typeof(HubPage)); }
     }
 }
